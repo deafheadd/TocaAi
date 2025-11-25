@@ -16,7 +16,7 @@ namespace TocaAi.Domain.Entities
             
         }
 
-        public Customer(Guid id, string name, string email, string cpf, string address, DateTime registerDate, bool isActive) : base(id)
+        public Customer(Guid id, string name, string email, string cpf, string address, DateTime registerDate) : base(id)
         {
             Name = name;
             Email = email;

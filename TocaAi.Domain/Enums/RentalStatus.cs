@@ -1,7 +1,6 @@
 ﻿public enum RentalStatus
 {
-    Active,
-    Returned,
-    Late,
-    Renewed
+    Open,
+    Closed,
+    Canceled
 }

@@ -21,7 +21,7 @@ namespace TocaAi.Domain.Entities
             
         }
 
-        public Equipment(Guid id, string name, EquipmentType type, string brand, string model, string serialNumber, string? description, decimal dailyRate, DateTime acquisitionDate, ConservationStatus conservationStatus, string? observations, bool isAvailable) : base(id)
+        public Equipment(Guid id, string name, EquipmentType type, string brand, string model, string serialNumber, string? description, decimal dailyRate, DateTime acquisitionDate, ConservationStatus conservationStatus, string? notes) : base(id)
         {
             Name = name;
             Type = type;
@@ -32,7 +32,7 @@ namespace TocaAi.Domain.Entities
             DailyRate = dailyRate;
             AcquisitionDate = acquisitionDate;
             ConservationStatus = conservationStatus;
-            Observations = observations;
+            Notes = notes;
             IsAvailable = true;
         }
     }
