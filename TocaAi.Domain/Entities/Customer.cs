@@ -4,7 +4,7 @@ namespace TocaAi.Domain.Entities
 {
     public class Customer : BaseEntity<Guid>
     {
-        public string Name { get; private set; }
+        public string FullName { get; private set; }
         public string Email { get; private set; }
         public string CPF { get; private set; }
         public string Address { get; private set; }
@@ -16,9 +16,9 @@ namespace TocaAi.Domain.Entities
             
         }
 
-        public Customer(Guid id, string name, string email, string cpf, string address, DateTime registerDate) : base(id)
+        public Customer(Guid id, string fullName, string email, string cpf, string address, DateTime registerDate) : base(id)
         {
-            Name = name;
+            FullName = fullName;
             Email = email;
             CPF = cpf;
             Address = address;
