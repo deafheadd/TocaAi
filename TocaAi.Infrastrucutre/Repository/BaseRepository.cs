@@ -4,7 +4,7 @@ using TocaAi.Infrastrucutre.Context;
 
 namespace TocaAi.Infrastrucutre.Repository
 {
-    public class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : class, IBaseEntity
+    public class BaseRepository<TEntity, TId> : IBaseRepository<TEntity, TId> where TEntity : BaseEntity<TId>
     {
         protected readonly TocaAiDbContext _context;
         protected readonly DbSet<TEntity> _dbSet;
@@ -61,7 +61,7 @@ namespace TocaAi.Infrastrucutre.Repository
             return query.ToList();
         }
 
-        public TEntity? SelectById<TId>(TId id, IList<string>? includes = null)
+        public TEntity? SelectById(TId id, IList<string>? includes = null)
         {
             IQueryable<TEntity> query = _dbSet;
 

@@ -1,6 +1,6 @@
 ﻿namespace TocaAi.Domain.Base
 {
-    public abstract class BaseEntity<TId> : IBaseEntity
+    public abstract class BaseEntity<TId> : IBaseEntity<TId>
     {
         protected BaseEntity()
         {

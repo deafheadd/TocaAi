@@ -1,7 +1,7 @@
 ﻿namespace TocaAi.Domain.Base
 {
-    public interface IBaseEntity
+    public interface IBaseEntity<TId>
     {
-        Guid Id { get; }
+        TId Id { get; }
     }
 }
