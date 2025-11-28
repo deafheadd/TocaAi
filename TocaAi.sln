@@ -5,7 +5,7 @@ VisualStudioVersion = 17.14.36401.2
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TocaAi.Domain", "TocaAi.Domain\TocaAi.Domain.csproj", "{2AE81E11-0ABE-48BE-90C9-5E6AE0121BFA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TocaAi.Infrastrucutre", "TocaAi.Infrastrucutre\TocaAi.Infrastrucutre.csproj", "{AEDB5A7E-5050-49E4-B5CC-58A944BFC05F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TocaAi.Infrastructure", "TocaAi.Infrastrucutre\TocaAi.Infrastructure.csproj", "{AEDB5A7E-5050-49E4-B5CC-58A944BFC05F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -7,7 +7,7 @@ namespace TocaAi.Domain.Interfaces
     {
         ICollection<Rental> GetRentalsByCustomer(Guid customerId);
         ICollection<Rental> GetRentalsByEquipment(Guid equipmentId);
-        ICollection<Rental> GetOpenRentals(Guid rentalId);
+        ICollection<Rental> GetOpenRentals();
         bool RentalExists(Guid rentalId);
     }
 }

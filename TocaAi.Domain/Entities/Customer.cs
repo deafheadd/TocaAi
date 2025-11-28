@@ -10,6 +10,7 @@ namespace TocaAi.Domain.Entities
         public string Address { get; private set; }
         public DateTime RegisterDate { get; private set; }
         public bool IsActive { get; private set; }
+        public ICollection<Rental> Rentals { get; private set; }
 
         protected Customer()
         {
@@ -24,6 +25,7 @@ namespace TocaAi.Domain.Entities
             Address = address;
             RegisterDate = registerDate;
             IsActive = true;
+            Rentals = new List<Rental>();
         }
     }
 }
