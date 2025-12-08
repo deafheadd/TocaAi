@@ -15,6 +15,7 @@ namespace TocaAi.Domain.Entities
         public decimal TotalAmount { get; private set; }
         public decimal LateFee { get; private set; }
         public RentalStatus RentalStatus { get; private set; }
+        public PaymentMethod PaymentMethod { get; private set; }
         public string? Notes { get; private set; }
 
         protected Rental()
