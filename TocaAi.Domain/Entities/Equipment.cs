@@ -9,7 +9,7 @@ namespace TocaAi.Domain.Entities
         public string Brand { get; private set; }
         public string Model { get; private set; }
         public string SerialNumber { get; private set; }
-        public string? Description { get; private set; }
+        public string Description { get; private set; }
         public decimal DailyRate { get; private set; }
         public DateTime AcquisitionDate { get; private set; }
         public ConservationStatus ConservationStatus { get; private set; }
@@ -21,7 +21,7 @@ namespace TocaAi.Domain.Entities
             
         }
 
-        public Equipment(Guid id, string name, EquipmentType type, string brand, string model, string serialNumber, string? description, decimal dailyRate, DateTime acquisitionDate, ConservationStatus conservationStatus, string? notes) : base(id)
+        public Equipment(Guid id, string name, EquipmentType type, string brand, string model, string serialNumber, string description, decimal dailyRate, DateTime acquisitionDate, ConservationStatus conservationStatus, string? notes) : base(id)
         {
             Name = name;
             Type = type;
