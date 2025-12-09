@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
 using TocaAi.Domain.Entities;
 
-namespace TocaAi.Domain.Validations
+namespace TocaAi.Domain.Validators
 {
     public class CustomerValidator : AbstractValidator<Customer>
     {

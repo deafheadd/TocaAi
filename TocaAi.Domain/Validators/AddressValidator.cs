@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
 using TocaAi.Domain.ValueObjects;
 
-namespace TocaAi.Domain.Validations
+namespace TocaAi.Domain.Validators
 {
     public class AddressValidator : AbstractValidator<Address>
     {

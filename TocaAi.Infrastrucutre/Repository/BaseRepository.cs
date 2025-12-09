@@ -48,9 +48,12 @@ namespace TocaAi.Infrastructure.Repository
             }
         }
 
-        public IList<TEntity> Select(List<string>? includes = null)
+        public IList<TEntity> Select(bool tracking = true, IList<string>? includes = null)
         {
             IQueryable<TEntity> query = _dbSet;
+
+            if (!tracking)
+                query = query.AsNoTracking();
 
             if (includes != null)
             {
@@ -61,9 +64,12 @@ namespace TocaAi.Infrastructure.Repository
             return query.ToList();
         }
 
-        public TEntity? SelectById(TId id, IList<string>? includes = null)
+        public TEntity? SelectById(TId id, bool tracking = true, IList<string>? includes = null)
         {
             IQueryable<TEntity> query = _dbSet;
+
+            if (!tracking)
+                query = query.AsNoTracking();
 
             if(includes != null)
             {
