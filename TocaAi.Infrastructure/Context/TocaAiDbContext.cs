@@ -15,7 +15,7 @@ namespace TocaAi.Infrastructure.Context
         }
 
         public DbSet<Customer> Customers { get; set; }
-        public DbSet<Equipment> Equipment { get; set; }
+        public DbSet<Equipment> Equipments { get; set; }
         public DbSet<Rental> Rentals { get; set; }
     }
 }
