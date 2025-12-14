@@ -7,7 +7,5 @@ namespace TocaAi.Domain.Interfaces
     {
         IEnumerable<Customer> SearchByName(string fullName);
         Customer? GetWithRentals(Guid customerId);
-        Customer GetByEmail(string email);
-        bool EmailExists(string email);
     }
 }
