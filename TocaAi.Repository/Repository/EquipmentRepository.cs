@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using TocaAi.Domain.Entities;
 using TocaAi.Domain.Interfaces;
-using TocaAi.Infrastructure.Context;
+using TocaAi.Repository.Context;
 
-namespace TocaAi.Infrastructure.Repository
+namespace TocaAi.Repository.Repository
 {
     public class EquipmentRepository(TocaAiDbContext context) :
         BaseRepository<Equipment, Guid>(context), IEquipmentRepository

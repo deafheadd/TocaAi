@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using TocaAi.Domain.Base;
-using TocaAi.Infrastructure.Context;
+using TocaAi.Repository.Context;
 
-namespace TocaAi.Infrastructure.Repository
+namespace TocaAi.Repository.Repository
 {
     public class BaseRepository<TEntity, TId> : IBaseRepository<TEntity, TId> where TEntity : BaseEntity<TId>
     {

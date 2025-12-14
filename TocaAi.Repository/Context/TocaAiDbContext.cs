@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using TocaAi.Domain.Entities;
 
-namespace TocaAi.Infrastructure.Context
+namespace TocaAi.Repository.Context
 {
     public class TocaAiDbContext : DbContext
     {

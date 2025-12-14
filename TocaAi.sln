@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TocaAi.Infrastructure", "To
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TocaAi.Test", "TocaAi.Test\TocaAi.Test.csproj", "{8371AA6D-D200-498D-9706-AE0419D16134}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TocaAi.App", "TocaAi.App\TocaAi.App.csproj", "{60BF7F7C-BF90-4138-BB83-E7205A0A44AD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{8371AA6D-D200-498D-9706-AE0419D16134}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8371AA6D-D200-498D-9706-AE0419D16134}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8371AA6D-D200-498D-9706-AE0419D16134}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60BF7F7C-BF90-4138-BB83-E7205A0A44AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60BF7F7C-BF90-4138-BB83-E7205A0A44AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60BF7F7C-BF90-4138-BB83-E7205A0A44AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60BF7F7C-BF90-4138-BB83-E7205A0A44AD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
