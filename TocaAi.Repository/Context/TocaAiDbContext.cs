@@ -14,7 +14,7 @@ namespace TocaAi.Repository.Context
             base.OnModelCreating(modelBuilder);
         }
 
-        public DbSet<Customer> Customers { get; set; }
+        public DbSet<Person> Customers { get; set; }
         public DbSet<Equipment> Equipments { get; set; }
         public DbSet<Rental> Rentals { get; set; }
     }

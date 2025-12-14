@@ -7,19 +7,21 @@ namespace TocaAi.Domain.Entities
         public string Email { get; private set; }
         public string PasswordHash { get; private set; }
         public UserRole Role { get; private set; }
-        public Guid? CustomerId { get; private set; }
-        public Customer? Customer { get; private set; }
+        public Person Person { get; private set; }
+        public bool isActive { get; private set; }
 
         protected UserAccount()
         {
 
         }
 
-        public UserAccount(Guid id, string email, string passwordHash, UserRole role) : base(id)
+        public UserAccount(Guid id, string email, string passwordHash, UserRole role, Person person) : base(id)
         {
             Email = email;
             PasswordHash = passwordHash;
             Role = role;
+            Person = person;
+            isActive = true;
         }
     }
 }

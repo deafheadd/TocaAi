@@ -4,6 +4,9 @@ namespace TocaAi.Domain.Entities
 {
     public class Equipment : BaseEntity<Guid>
     {
+        public Guid OwnerId { get; private set; }
+        public UserAccount Owner { get; private set; }
+
         public string Name { get; private set; }
         public EquipmentType Type { get; private set; }
         public string Brand { get; private set; }
@@ -18,11 +21,12 @@ namespace TocaAi.Domain.Entities
 
         protected Equipment()
         {
-            
+
         }
 
-        public Equipment(Guid id, string name, EquipmentType type, string brand, string model, string serialNumber, string description, decimal dailyRate, DateTime acquisitionDate, ConservationStatus conservationStatus, string? notes) : base(id)
+        public Equipment(Guid id, UserAccount owner, string name, EquipmentType type, string brand, string model, string serialNumber, string description, decimal dailyRate, DateTime acquisitionDate, ConservationStatus conservationStatus, string? notes) : base(id)
         {
+            Owner = owner;
             Name = name;
             Type = type;
             Brand = brand;

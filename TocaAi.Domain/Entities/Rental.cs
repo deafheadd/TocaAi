@@ -4,10 +4,11 @@ namespace TocaAi.Domain.Entities
 {
     public class Rental : BaseEntity<Guid>
     {
-        public Guid CustomerId { get; private set; }
-        public Customer Customer { get; set; }
+        public Guid UserAccountId { get; private set; }
+        public UserAccount UserAccount { get; private set; }
         public Guid EquipmentId { get; private set; }
-        public Equipment Equipment { get; set; }
+        public Equipment Equipment { get; private set; }
+
         public DateTime PickupDate { get; private set; }
         public DateTime ExpectedReturnDate { get; private set; }
         public DateTime? ActualReturnDate { get; private set; }
@@ -23,9 +24,9 @@ namespace TocaAi.Domain.Entities
             
         }
 
-        public Rental(Guid id, Guid customerId, Guid equipmentId, DateTime pickupDate, DateTime expectedReturnDate, decimal dailyRate, string? notes) : base(id)
+        public Rental(Guid id, Guid userAccountId, Guid equipmentId, DateTime pickupDate, DateTime expectedReturnDate, decimal dailyRate, string? notes) : base(id)
         {
-            CustomerId = customerId;
+            UserAccountId = userAccountId;
             EquipmentId = equipmentId;
             PickupDate = pickupDate;
             ExpectedReturnDate = expectedReturnDate;
