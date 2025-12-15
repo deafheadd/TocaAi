@@ -1,0 +1,1 @@
+Server=GUSTAG15\SQLEXPRESS;Database=TocaAiDB;User Id=gustavo;Password=1875;TrustServerCertificate=True;
