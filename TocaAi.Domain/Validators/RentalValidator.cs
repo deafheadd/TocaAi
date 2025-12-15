@@ -7,7 +7,7 @@ namespace TocaAi.Domain.Validators
     {
         public RentalValidator()
         {
-            RuleFor(r => r.CustomerId)
+            RuleFor(r => r.UserAccountId)
                 .NotEmpty().WithMessage("Customer ID is required.");
 
             RuleFor(r => r.EquipmentId)

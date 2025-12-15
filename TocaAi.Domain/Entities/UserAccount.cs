@@ -15,7 +15,7 @@ namespace TocaAi.Domain.Entities
         // equipamentos
         public ICollection<Equipment> EquipmentOwned { get; private set; }
 
-        public bool isActive { get; private set; }
+        public bool IsActive { get; private set; }
 
         protected UserAccount()
         {
@@ -30,7 +30,7 @@ namespace TocaAi.Domain.Entities
             Person = person;
             Rentals = new List<Rental>();
             EquipmentOwned = new List<Equipment>();
-            isActive = true;
+            IsActive = true;
         }
     }
 }

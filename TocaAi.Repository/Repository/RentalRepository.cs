@@ -15,7 +15,7 @@ namespace TocaAi.Repository.Repository
 
         public ICollection<Rental> GetRentalsByCustomer(Guid customerId)
         {
-            return _dbSet.Where(r => r.CustomerId == customerId).ToList();
+            return _dbSet.Where(r => r.UserAccountId == customerId).ToList();
         }
 
         public ICollection<Rental> GetRentalsByEquipment(Guid equipmentId)

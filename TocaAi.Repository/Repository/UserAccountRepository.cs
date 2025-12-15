@@ -15,7 +15,12 @@ namespace TocaAi.Repository.Repository
 
         public UserAccount? GetByEmail(string email)
         {
-            return _dbSet.Include(u => u.Customer).FirstOrDefault(u => u.Email == email);
+            return _dbSet.Include(u => u.Person).FirstOrDefault(u => u.Email == email);
+        }
+
+        public UserAccount? GetWithRentals(Guid personId)
+        {
+            return _dbSet.Include(p => p.Rentals).FirstOrDefault(p => p.Id == personId);
         }
     }
 }
