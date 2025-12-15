@@ -11,12 +11,6 @@ namespace TocaAi.Domain.Entities
         public Address Address { get; private set; }
         public DateTime RegisterDate { get; private set; }
 
-        // alugueis
-        public ICollection<Rental> Rentals { get; private set; }
-
-        // equipamentos
-        public ICollection<Equipment> EquipmentOwned { get; private set; }
-
         // login
         public Guid UserAccountId { get; private set; } // fk
 
@@ -32,8 +26,6 @@ namespace TocaAi.Domain.Entities
             PhoneNumber = phoneNumber;
             Address = address;
             RegisterDate = registerDate;
-            Rentals = new List<Rental>();
-            EquipmentOwned = new List<Equipment>();
         }
     }
 }

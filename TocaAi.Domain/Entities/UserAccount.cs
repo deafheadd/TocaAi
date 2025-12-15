@@ -8,6 +8,13 @@ namespace TocaAi.Domain.Entities
         public string PasswordHash { get; private set; }
         public UserRole Role { get; private set; }
         public Person Person { get; private set; }
+
+        // alugueis
+        public ICollection<Rental> Rentals { get; private set; }
+
+        // equipamentos
+        public ICollection<Equipment> EquipmentOwned { get; private set; }
+
         public bool isActive { get; private set; }
 
         protected UserAccount()
@@ -21,6 +28,8 @@ namespace TocaAi.Domain.Entities
             PasswordHash = passwordHash;
             Role = role;
             Person = person;
+            Rentals = new List<Rental>();
+            EquipmentOwned = new List<Equipment>();
             isActive = true;
         }
     }
