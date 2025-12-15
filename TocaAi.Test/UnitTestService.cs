@@ -10,14 +10,7 @@ namespace TocaAi.Test
 
         public ServiceProvider ConfigureServices()
         {
-            services = new ServiceCollection();
-
-            // configs de appsettings.json
-            var configuration = new ConfigurationBuilder()
-                .SetBasePath(AppContext.BaseDirectory)
-                .AddJsonFile("appsettings.json", optional: false)
-                .Build();
-
+            var services = new ServiceCollection();
             return services.BuildServiceProvider();
         }
     }

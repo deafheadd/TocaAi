@@ -31,12 +31,14 @@ namespace TocaAi.Repository.Mapping
             // relacionamento 1 - N
             builder.HasMany(u => u.Rentals)
                 .WithOne(r => r.UserAccount)
-                .HasForeignKey(r => r.UserAccountId);
+                .HasForeignKey(r => r.UserAccountId)
+                .OnDelete(DeleteBehavior.Restrict);
 
             // relacionamento 1 - N
             builder.HasMany(u => u.EquipmentOwned)
                 .WithOne(e => e.Owner)
-                .HasForeignKey(e => e.OwnerId);
+                .HasForeignKey(e => e.OwnerId)
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

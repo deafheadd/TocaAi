@@ -19,7 +19,14 @@ namespace TocaAi.Repository.Mapping
                 .IsRequired();
 
             builder.Property(r => r.DailyRate)
-                .IsRequired();
+                .IsRequired()
+                .HasPrecision(18, 2);
+
+            builder.Property(r => r.LateFee)
+                .HasPrecision(18, 2);
+
+            builder.Property(r => r.TotalAmount)
+                .HasPrecision(18, 2);
 
             builder.Property(r => r.RentalStatus)
                 .IsRequired();

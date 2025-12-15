@@ -71,13 +71,13 @@ namespace TocaAi.Repository.Repository
             if (!tracking)
                 query = query.AsNoTracking();
 
-            if(includes != null)
+            if (includes != null)
             {
                 foreach (var include in includes)
                     query = query.Include(include);
             }
 
-            return query.FirstOrDefault(e => e.Id.Equals(id));
+            return query.FirstOrDefault(e => e.Id != null && e.Id.Equals(id));
         }
     }
 }

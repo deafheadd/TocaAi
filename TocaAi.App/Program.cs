@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using TocaAi.App.Infra;
 using TocaAi.Repository.Context;
 
 namespace TocaAi.App
@@ -12,15 +13,14 @@ namespace TocaAi.App
         [STAThread]
         static void Main()
         {
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
-            
             // criação do DbContextOptions
-            var optionsBuilder = new DbContextOptionsBuilder<TocaAiDbContext>();
-            optionsBuilder.UseSqlServer("Server=GUSTAG15\\SQLEXPRESS;Database=TocaAiDB;Trusted_Connection=True;TrustServerCertificate=True;");
+            //var optionsBuilder = new DbContextOptionsBuilder<TocaAiDbContext>();
+            //optionsBuilder.UseSqlServer("Server=GUSTAG15\\SQLEXPRESS;Database=TocaAiDB;Trusted_Connection=True;TrustServerCertificate=True;");
 
             // instância do DbContext
-            using var context = new TocaAiDbContext(optionsBuilder.Options);
+            //using var context = new TocaAiDbContext(optionsBuilder.Options);
+
+            ConfigureDI.ConfigureService();
 
             ApplicationConfiguration.Initialize();
             Application.Run(new Form1());

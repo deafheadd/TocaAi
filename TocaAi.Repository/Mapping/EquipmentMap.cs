@@ -36,7 +36,8 @@ namespace TocaAi.Repository.Mapping
                 .HasMaxLength(300);
 
             builder.Property(e => e.DailyRate)
-                .IsRequired();
+                .IsRequired()
+                .HasPrecision(18, 2);
 
             builder.Property(e => e.AcquisitionDate)
                 .IsRequired();
