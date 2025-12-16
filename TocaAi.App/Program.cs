@@ -1,29 +1,23 @@
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using TocaAi.App.Infra;
-using TocaAi.Repository.Context;
+using TocaAi.App.Pages;
 
 namespace TocaAi.App
 {
     internal static class Program
     {
-        /// <summary>
-        ///  The main entry point for the application.
-        /// </summary>
+        public static IServiceProvider ServiceProvider { get; private set; }
         [STAThread]
         static void Main()
         {
-            // criação do DbContextOptions
-            //var optionsBuilder = new DbContextOptionsBuilder<TocaAiDbContext>();
-            //optionsBuilder.UseSqlServer("Server=GUSTAG15\\SQLEXPRESS;Database=TocaAiDB;Trusted_Connection=True;TrustServerCertificate=True;");
-
-            // instância do DbContext
-            //using var context = new TocaAiDbContext(optionsBuilder.Options);
-
-            ConfigureDI.ConfigureService();
-
             ApplicationConfiguration.Initialize();
-            Application.Run(new Form1());
+
+            // configuração de serviços
+            var serviceProvider = ConfigureDI.ConfigureService();
+
+            var loginForm = serviceProvider.GetRequiredService<LoginForm>();
+
+            Application.Run(loginForm);
         }
     }
 }

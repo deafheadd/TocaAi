@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using TocaAi.App.Pages;
 using TocaAi.App.ViewModels;
 using TocaAi.Domain.Base;
 using TocaAi.Domain.Entities;
@@ -12,9 +13,9 @@ namespace TocaAi.App.Infra
 {
     public static class ConfigureDI
     {
-        public static ServiceProvider serviceProvider;
+        //public static ServiceProvider serviceProvider;
 
-        public static void ConfigureService()
+        public static IServiceProvider ConfigureService()
         {
             var dbConfigFile = "Config/DbConfig.txt";
             var dbConnectionString = File.ReadAllText(dbConfigFile);
@@ -60,7 +61,12 @@ namespace TocaAi.App.Infra
             });
             #endregion
 
-            serviceProvider = services.BuildServiceProvider();
+            #region Forms
+            services.AddTransient<LoginForm>();
+            #endregion
+
+            //serviceProvider = services.BuildServiceProvider();
+            return services.BuildServiceProvider();
         }
     }
 }

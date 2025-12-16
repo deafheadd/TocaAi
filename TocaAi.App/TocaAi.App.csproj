@@ -15,11 +15,19 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.1" />
+    <PackageReference Include="ReaLTaiizor" Version="3.8.1.4" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\TocaAi.Repository\TocaAi.Repository.csproj" />
     <ProjectReference Include="..\TocaAi.Service\TocaAi.Service.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Config\DbConfig.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>
