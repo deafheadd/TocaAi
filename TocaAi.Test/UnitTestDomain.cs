@@ -16,7 +16,8 @@ namespace TocaAi.Test
                 "Bairro B",
                 "Birigui",
                 "SP",
-                "12345678"
+                "12345678",
+                ""
             );
 
             var person = new Person(
@@ -49,13 +50,15 @@ namespace TocaAi.Test
                 "Bairro B",
                 "Birigui",
                 "SP",
-                "12345678"),
+                "12345678",
+                ""),
                 DateTime.UtcNow
             );
 
             // cria UserAccount vinculado a Person
             var userAccount = new UserAccount(
                 Guid.NewGuid(),
+                "gusta",
                 "gustavo@gmail.com",
                 "senha123",
                 UserRole.Customer,
@@ -83,12 +86,14 @@ namespace TocaAi.Test
                 "Bairro B",
                 "Birigui",
                 "SP",
-                "12345678"),
+                "12345678",
+                ""),
                 DateTime.UtcNow
             );
 
             var owner = new UserAccount(
                 Guid.NewGuid(),
+                "gusta",
                 "gustavo@gmail.com",
                 "senha123",
                 UserRole.Seller,
@@ -133,12 +138,14 @@ namespace TocaAi.Test
                 "Bairro B",
                 "Birigui",
                 "SP",
-                "12345678"),
+                "12345678",
+                ""),
                 DateTime.UtcNow
             );
 
             var customer = new UserAccount(
                 Guid.NewGuid(),
+                "gusta",
                 "gustavo@gmail.com",
                 "senha123",
                 UserRole.Customer,
@@ -157,12 +164,14 @@ namespace TocaAi.Test
                 "Bairro C",
                 "Birigui",
                 "SP",
-                "87654321"),
+                "87654321",
+                ""),
                 DateTime.UtcNow
             );
 
             var seller = new UserAccount(
                 Guid.NewGuid(),
+                "gusta",
                 "gustavo@gmail.com",
                 "senha123",
                 UserRole.Customer,

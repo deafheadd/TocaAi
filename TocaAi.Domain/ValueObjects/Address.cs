@@ -9,7 +9,8 @@
         public string State { get; }
         public string PostalCode { get; }
 
-        public Address(string street, string number, string neighborhood, string city, string state, string postalCode)
+        public string? Complement { get; }
+        public Address(string street, string number, string neighborhood, string city, string state, string postalCode, string complement)
         {
             Street = street;
             Number = number;
@@ -17,6 +18,7 @@
             City = city;
             State = state;
             PostalCode = postalCode;
+            Complement = complement;
         }
     }
 }

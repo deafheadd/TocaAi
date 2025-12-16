@@ -63,6 +63,7 @@ namespace TocaAi.App.Infra
 
             #region Forms
             services.AddTransient<LoginForm>();
+            services.AddTransient<RegisterForm>();
             #endregion
 
             //serviceProvider = services.BuildServiceProvider();

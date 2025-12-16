@@ -12,6 +12,9 @@ namespace TocaAi.App.Pages
             this.MinimumSize = this.Size;
             this.MaximumSize = this.Size;
 
+            // esconde a senha
+            txtPassword.UseSystemPasswordChar = true;
+
             // hover do mouse
             lblRegister.MouseEnter += (s, e) =>
             {
@@ -22,7 +25,42 @@ namespace TocaAi.App.Pages
             {
                 lblRegister.ForeColor = Color.DimGray;
             };
+        }
 
+        private void lblRegister_Click(object sender, EventArgs e)
+        {
+            var registerForm = new RegisterForm();
+
+            // centralizar sobre o form atual
+            registerForm.StartPosition = FormStartPosition.Manual;
+            registerForm.Location = new Point(
+                this.Location.X + (this.Width - registerForm.Width) / 2,
+                this.Location.Y + (this.Height - registerForm.Height) / 2
+            );
+
+            registerForm.Show();
+            this.Hide();
+        }
+
+        private void LoginForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void pBoxEye_Click(object sender, EventArgs e)
+        {
+            if (txtPassword.UseSystemPasswordChar == true)
+            {
+                // exibe senha
+                txtPassword.UseSystemPasswordChar = false;
+                pBoxEye.Image = Properties.Resources.eye_hidden;
+            }
+            else
+            {
+                // esconde senha
+                txtPassword.UseSystemPasswordChar = true;
+                pBoxEye.Image = Properties.Resources.eye_visible;
+            }
         }
     }
 }

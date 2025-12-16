@@ -10,6 +10,10 @@ namespace TocaAi.Repository.Mapping
         {
             builder.ToTable("UserAccounts");
 
+            builder.Property(u => u.Username)
+                .IsRequired()
+                .HasMaxLength(30);
+
             builder.Property(u => u.Email)
                 .IsRequired()
                 .HasMaxLength(150);

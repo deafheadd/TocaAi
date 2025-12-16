@@ -30,6 +30,10 @@ namespace TocaAi.Domain.Validators
             RuleFor(a => a.PostalCode)
                 .NotEmpty().WithMessage("Postal code is required.")
                 .MaximumLength(8).WithMessage("Postal code must not exceed 8 characters.");
+
+            RuleFor(a => a.Complement)
+                .MaximumLength(50).WithMessage("Complement must not exceed 50 characters.")
+                .When(a => !string.IsNullOrEmpty(a.Complement));
         }
     }
 }

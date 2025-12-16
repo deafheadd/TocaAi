@@ -6,7 +6,7 @@ namespace TocaAi.Repository.Mapping.Extensions
     public static class AddressMappingExtensions
     {
         // método que padroniza o mapeamento de Address em qualquer entidade
-        public static void ConfigureAddress<T>(this OwnedNavigationBuilder<T, Address> builder) 
+        public static void ConfigureAddress<T>(this OwnedNavigationBuilder<T, Address> builder)
             where T : class
         {
             builder.Property(a => a.Street)
@@ -32,6 +32,9 @@ namespace TocaAi.Repository.Mapping.Extensions
             builder.Property(a => a.PostalCode)
                 .IsRequired()
                 .HasMaxLength(8);
+
+            builder.Property(a => a.Complement)
+                .HasMaxLength(50);
         }
     }
 }

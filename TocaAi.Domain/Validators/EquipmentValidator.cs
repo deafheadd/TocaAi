@@ -45,7 +45,7 @@ namespace TocaAi.Domain.Validators
 
             RuleFor(e => e.Notes)
                 .MaximumLength(500).WithMessage("Notes must not exceed 500 characters.")
-                .When(e => e.Notes != null);
+                .When(e => !string.IsNullOrEmpty(e.Notes));
         }
     }
 }

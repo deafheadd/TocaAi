@@ -87,7 +87,8 @@ namespace TocaAi.Test
                     "Bairro Y",
                     "Cidade Z",
                     "SP",
-                    "01234-567"
+                    "01234-567",
+                    ""
                 ),
                 DateTime.Now
             );
@@ -95,6 +96,7 @@ namespace TocaAi.Test
             // criação de UserAccount
             var user = new UserAccount(
                 Guid.NewGuid(),
+                "joao",
                 "teste@gmail.com",
                 "123456",
                 UserRole.Customer,

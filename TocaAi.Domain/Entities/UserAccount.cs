@@ -4,6 +4,7 @@ namespace TocaAi.Domain.Entities
 {
     public class UserAccount : BaseEntity<Guid>
     {
+        public string Username { get; private set; }
         public string Email { get; private set; }
         public string PasswordHash { get; private set; }
         public UserRole Role { get; private set; }
@@ -22,8 +23,9 @@ namespace TocaAi.Domain.Entities
 
         }
 
-        public UserAccount(Guid id, string email, string passwordHash, UserRole role, Person person) : base(id)
+        public UserAccount(Guid id, string username, string email, string passwordHash, UserRole role, Person person) : base(id)
         {
+            Username = username;
             Email = email;
             PasswordHash = passwordHash;
             Role = role;

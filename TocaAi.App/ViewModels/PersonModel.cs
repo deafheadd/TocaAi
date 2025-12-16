@@ -12,6 +12,7 @@
         string Neighborhood,
         string City,
         string State,
-        string PostalCode
+        string PostalCode,
+        string? Complement
     );
 }
