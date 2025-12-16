@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace TocaAi.Repository.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class InitialMappingUpdate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -16,6 +16,7 @@ namespace TocaAi.Repository.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Username = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
                     Email = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: false),
                     PasswordHash = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Role = table.Column<int>(type: "int", nullable: false),
@@ -69,6 +70,7 @@ namespace TocaAi.Repository.Migrations
                     Address_City = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     Address_State = table.Column<string>(type: "nvarchar(2)", maxLength: 2, nullable: false),
                     Address_PostalCode = table.Column<string>(type: "nvarchar(8)", maxLength: 8, nullable: false),
+                    Address_Complement = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
                     RegisterDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UserAccountId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },

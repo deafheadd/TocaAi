@@ -13,15 +13,27 @@ namespace TocaAi.App.Pages
     {
         // repositórios
         private readonly IBaseRepository<UserAccount, Guid> _userAccountRepository;
+        private readonly IBaseRepository<Person, Guid> _personRepository;
 
         // validators
         private readonly IValidator<Person> _personValidator;
         private readonly IValidator<UserAccount> _userAccountValidator;
         private readonly IValidator<RegisterUserModel> _registerUserValidator;
 
-        public RegisterForm()
+        public RegisterForm(
+            IBaseRepository<UserAccount, Guid> userAccountRepository,
+            IBaseRepository<Person,Guid> personRepository,
+            IValidator<Person> personValidator,
+            IValidator<UserAccount> userAccountValidator,
+            IValidator<RegisterUserModel> registerUserValidator)
         {
             InitializeComponent();
+
+            _userAccountRepository = userAccountRepository;
+            _personRepository = personRepository;
+            _personValidator = personValidator;
+            _userAccountValidator = userAccountValidator;
+            _registerUserValidator = registerUserValidator;
 
             // trava o tamanho da janela
             this.MinimumSize = this.Size;
@@ -35,20 +47,6 @@ namespace TocaAi.App.Pages
             _personValidator = new PersonValidator();
             _userAccountValidator = new UserAccountValidator();
             _registerUserValidator = new RegisterUserModelValidator();
-        }
-
-        private void RegisterForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            var loginForm = new LoginForm();
-
-            // centralizar sobre o form atual
-            loginForm.StartPosition = FormStartPosition.Manual;
-            loginForm.Location = new Point(
-                this.Location.X + (this.Width - loginForm.Width) / 2,
-                this.Location.Y + (this.Height - loginForm.Height) / 2
-            );
-
-            loginForm.Show();
         }
 
         private void btnRegister_Click(object sender, EventArgs e)

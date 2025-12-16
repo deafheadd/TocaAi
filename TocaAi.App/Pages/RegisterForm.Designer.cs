@@ -497,7 +497,6 @@
             MaximizeBox = false;
             Name = "RegisterForm";
             Text = "TocaAi - Registro";
-            FormClosing += RegisterForm_FormClosing;
             ((System.ComponentModel.ISupportInitialize)pBoxEye1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pBoxEye2).EndInit();
             ResumeLayout(false);

@@ -1,9 +1,14 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using AutoMapper;
+using FluentValidation;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using TocaAi.App.Pages;
+using TocaAi.App.Validators;
 using TocaAi.App.ViewModels;
 using TocaAi.Domain.Base;
 using TocaAi.Domain.Entities;
+using TocaAi.Domain.Interfaces;
+using TocaAi.Domain.Validators;
 using TocaAi.Repository.Context;
 using TocaAi.Repository.Repository;
 using TocaAi.Service.Interfaces;
@@ -30,6 +35,8 @@ namespace TocaAi.App.Infra
 
             #region Repositories
             services.AddScoped<IBaseRepository<UserAccount, Guid>, BaseRepository<UserAccount, Guid>>();
+            services.AddScoped<IUserAccountRepository, UserAccountRepository>();
+
             services.AddScoped<IBaseRepository<Person, Guid>, BaseRepository<Person, Guid>>();
             services.AddScoped<IBaseRepository<Equipment, Guid>, BaseRepository<Equipment, Guid>>();
             services.AddScoped<IBaseRepository<Rental, Guid>, BaseRepository<Rental, Guid>>();
@@ -43,6 +50,12 @@ namespace TocaAi.App.Infra
             #endregion
 
             services.AddLogging();
+
+            #region Validators
+            services.AddScoped<IValidator<UserAccount>, UserAccountValidator>();
+            services.AddScoped<IValidator<Person>, PersonValidator>();
+            services.AddScoped<IValidator<RegisterUserModel>, RegisterUserModelValidator>();
+            #endregion
 
             #region Mappers
             services.AddAutoMapper(config =>
@@ -64,6 +77,7 @@ namespace TocaAi.App.Infra
             #region Forms
             services.AddTransient<LoginForm>();
             services.AddTransient<RegisterForm>();
+            services.AddTransient<MainForm>();
             #endregion
 
             //serviceProvider = services.BuildServiceProvider();

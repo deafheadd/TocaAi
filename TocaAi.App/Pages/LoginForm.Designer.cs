@@ -114,6 +114,7 @@
             btnLogin.TabIndex = 3;
             btnLogin.Text = "Entrar";
             btnLogin.TextAlignment = StringAlignment.Center;
+            btnLogin.Click += btnLogin_Click;
             // 
             // labelEdit2
             // 
@@ -144,7 +145,7 @@
             // 
             pBoxEye.BackColor = Color.White;
             pBoxEye.Image = Properties.Resources.eye_visible;
-            pBoxEye.Location = new Point(394, 280);
+            pBoxEye.Location = new Point(399, 280);
             pBoxEye.Name = "pBoxEye";
             pBoxEye.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
             pBoxEye.Size = new Size(34, 34);

@@ -30,7 +30,8 @@ namespace TocaAi.Repository.Mapping
             // relacionamento 1 - 1
             builder.HasOne(u => u.Person)
                 .WithOne()
-                .HasForeignKey<Person>(p => p.UserAccountId);
+                .HasForeignKey<Person>(p => p.UserAccountId)
+                .OnDelete(DeleteBehavior.Cascade);
 
             // relacionamento 1 - N
             builder.HasMany(u => u.Rentals)

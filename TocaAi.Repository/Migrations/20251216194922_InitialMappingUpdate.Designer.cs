@@ -12,8 +12,8 @@ using TocaAi.Repository.Context;
 namespace TocaAi.Repository.Migrations
 {
     [DbContext(typeof(TocaAiDbContext))]
-    [Migration("20251216025934_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20251216194922_InitialMappingUpdate")]
+    partial class InitialMappingUpdate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -196,6 +196,11 @@ namespace TocaAi.Repository.Migrations
                     b.Property<int>("Role")
                         .HasColumnType("int");
 
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
                     b.HasKey("Id");
 
                     b.ToTable("UserAccounts", (string)null);
@@ -229,6 +234,10 @@ namespace TocaAi.Repository.Migrations
                                 .IsRequired()
                                 .HasMaxLength(100)
                                 .HasColumnType("nvarchar(100)");
+
+                            b1.Property<string>("Complement")
+                                .HasMaxLength(50)
+                                .HasColumnType("nvarchar(50)");
 
                             b1.Property<string>("Neighborhood")
                                 .IsRequired()

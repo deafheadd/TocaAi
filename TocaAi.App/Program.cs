@@ -13,9 +13,9 @@ namespace TocaAi.App
             ApplicationConfiguration.Initialize();
 
             // configuração de serviços
-            var serviceProvider = ConfigureDI.ConfigureService();
+            ServiceProvider = ConfigureDI.ConfigureService();
 
-            var loginForm = serviceProvider.GetRequiredService<LoginForm>();
+            var loginForm = ServiceProvider.GetRequiredService<LoginForm>();
 
             Application.Run(loginForm);
         }
