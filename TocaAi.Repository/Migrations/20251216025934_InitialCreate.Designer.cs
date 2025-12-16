@@ -12,7 +12,7 @@ using TocaAi.Repository.Context;
 namespace TocaAi.Repository.Migrations
 {
     [DbContext(typeof(TocaAiDbContext))]
-    [Migration("20251215215049_InitialCreate")]
+    [Migration("20251216025934_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -140,6 +140,10 @@ namespace TocaAi.Repository.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<decimal>("LateFee")
+                        .HasPrecision(18, 2)
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("LateFeeRate")
                         .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 

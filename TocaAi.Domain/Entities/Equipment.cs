@@ -39,5 +39,10 @@ namespace TocaAi.Domain.Entities
             Notes = notes;
             IsAvailable = true;
         }
+
+        // altera disponibilidade
+        public void MarkAsUnavaiable() => IsAvailable = false;
+        public void MarkAsAvaiable() => IsAvailable = true;
+
     }
 }
