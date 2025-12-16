@@ -7,6 +7,9 @@ namespace TocaAi.Domain.Validators
     {
         public EquipmentValidator()
         {
+            RuleFor(e => e.OwnerId)
+                .NotEmpty().WithMessage("OwnerId must be provided.");
+
             RuleFor(e => e.Name)
                 .NotEmpty().WithMessage("Name is required.")
                 .MaximumLength(100).WithMessage("Name must not exceed 100 characters.");

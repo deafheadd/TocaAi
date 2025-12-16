@@ -8,6 +8,7 @@
         DateTime ExpectedReturnDate,
         decimal DailyRate,
         decimal TotalAmount,
+        decimal LateFeeRate,
         decimal LateFee,
         PaymentMethod PaymentMethod,
         RentalStatus RentalStatus,

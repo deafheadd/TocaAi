@@ -31,6 +31,9 @@ namespace TocaAi.Domain.Validators
             RuleFor(r => r.DailyRate)
                 .GreaterThan(0).WithMessage("Daily rate must be greater than zero.");
 
+            RuleFor(r => r.LateFeeRate)
+                .GreaterThanOrEqualTo(0).WithMessage("Late fee rate must be zero or greater.");
+
             RuleFor(r => r.PaymentMethod)
                 .IsInEnum().WithMessage("Invalid payment method.");
 

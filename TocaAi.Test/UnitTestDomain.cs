@@ -99,7 +99,7 @@ namespace TocaAi.Test
 
             var equipment = new Equipment(
                 Guid.NewGuid(),
-                owner,
+                owner.Id,
                 "Guitarra Fender Stratocaster",
                 EquipmentType.Guitar,
                 "Fender",
@@ -172,7 +172,7 @@ namespace TocaAi.Test
             // cria Equipment do vendedor
             var equipment = new Equipment(
                 Guid.NewGuid(),
-                seller,
+                seller.Id,
                 "Guitarra Fender Stratocaster",
                 EquipmentType.Guitar,
                 "Fender",
@@ -193,6 +193,8 @@ namespace TocaAi.Test
                 new DateTime(2025, 12, 10),
                 new DateTime(2025, 12, 15),
                 150.00m,
+                25.0m,
+                PaymentMethod.DebitCard,
                 "Aluguel para evento"
             );
 

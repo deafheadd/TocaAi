@@ -22,6 +22,10 @@ namespace TocaAi.Repository.Mapping
                 .IsRequired()
                 .HasPrecision(18, 2);
 
+            builder.Property(r => r.LateFeeRate)
+                .IsRequired()
+                .HasPrecision(18, 2);
+
             builder.Property(r => r.LateFee)
                 .HasPrecision(18, 2);
 

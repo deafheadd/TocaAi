@@ -12,6 +12,9 @@ namespace TocaAi.Repository.Mapping
 
             builder.HasKey(e => e.Id);
 
+            builder.Property(e => e.OwnerId)
+                .IsRequired();
+
             builder.Property(e => e.Name)
                 .IsRequired()
                 .HasMaxLength(100);

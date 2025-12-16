@@ -24,9 +24,9 @@ namespace TocaAi.Domain.Entities
 
         }
 
-        public Equipment(Guid id, UserAccount owner, string name, EquipmentType type, string brand, string model, string serialNumber, string description, decimal dailyRate, DateTime acquisitionDate, ConservationStatus conservationStatus, string? notes) : base(id)
+        public Equipment(Guid id, Guid ownerId, string name, EquipmentType type, string brand, string model, string serialNumber, string description, decimal dailyRate, DateTime acquisitionDate, ConservationStatus conservationStatus, string? notes) : base(id)
         {
-            Owner = owner;
+            OwnerId = ownerId;
             Name = name;
             Type = type;
             Brand = brand;
