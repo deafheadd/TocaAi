@@ -24,7 +24,7 @@ namespace TocaAi.Domain.Entities
 
         }
 
-        public Equipment(Guid id, Guid ownerId, string name, EquipmentType type, string brand, string model, string serialNumber, string description, decimal dailyRate, DateTime acquisitionDate, ConservationStatus conservationStatus, string? notes) : base(id)
+        public Equipment(Guid id, Guid ownerId, string name, EquipmentType type, string brand, string model, string serialNumber, string description, decimal dailyRate, DateTime acquisitionDate, ConservationStatus conservationStatus, string? notes, bool isAvailable = true) : base(id)
         {
             OwnerId = ownerId;
             Name = name;
@@ -37,7 +37,7 @@ namespace TocaAi.Domain.Entities
             AcquisitionDate = acquisitionDate;
             ConservationStatus = conservationStatus;
             Notes = notes;
-            IsAvailable = true;
+            IsAvailable = isAvailable;
         }
 
         // altera disponibilidade
@@ -51,6 +51,27 @@ namespace TocaAi.Domain.Entities
                 throw new ArgumentException("Owner id can not be null.", nameof(ownerId));
 
             this.OwnerId = ownerId;
+        }
+
+        // editar equipamento
+        public void UpdateDetails(
+            string name,
+            string brand,
+            string model,
+            string description,
+            decimal dailyRate,
+            EquipmentType type,
+            ConservationStatus status,
+            string? notes)
+        {
+            Name = name;
+            Brand = brand;
+            Model = model;
+            Description = description;
+            DailyRate = dailyRate;
+            Type = type;
+            ConservationStatus = status;
+            Notes = notes;
         }
     }
 }

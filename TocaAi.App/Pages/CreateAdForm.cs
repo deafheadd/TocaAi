@@ -13,7 +13,11 @@ namespace TocaAi.App.Pages
     {
         // serviço
         private readonly IEquipmentService _equipmentService;
+        // edição
+        private readonly Guid? _editId; // se for null é novo cadastro
 
+        // tentando resolver disponiblidade
+        private bool _isAvailableOriginal;
         public CreateAdForm(IEquipmentService equipmentService)
         {
             InitializeComponent();
@@ -21,6 +25,36 @@ namespace TocaAi.App.Pages
             _equipmentService = equipmentService;
 
             LoadEnums();
+
+            chkIsAvailable.Checked = true;
+        }
+
+        // construtor para edição
+        public CreateAdForm(IEquipmentService equipmentService, Equipment model) : this(equipmentService)
+        {
+            chkIsAvailable.Checked = model.IsAvailable;
+            if (!model.IsAvailable)
+            {
+                chkIsAvailable.Enable = true;
+            }
+
+            _editId = model.Id;
+            //_isAvailableOriginal = model.IsAvailable;
+            //chkIsAvailable.Checked = model.IsAvailable;
+            this.Text = "Editar Anúncio";
+            btnPostAd.Text = "Salvar Alterações";
+
+            // preencher campos
+            txtName.Text = model.Name;
+            txtBrand.Text = model.Brand;
+            txtModel.Text = model.Model;
+            txtSerialNumber.Text = model.SerialNumber;
+            txtDescription.Text = model.Description;
+            numericUpDownDailyRate.Value = model.DailyRate;
+            dtpAcquisition.Value = model.AcquisitionDate;
+            cboType.SelectedItem = model.Type;
+            cboConservation.SelectedItem = model.ConservationStatus;
+            txtNotes.Text = model.Notes;
         }
 
         private void LoadEnums()
@@ -57,7 +91,8 @@ namespace TocaAi.App.Pages
                 dailyRate,
                 acquisitionDate,
                 (ConservationStatus)cboConservation.SelectedItem,
-                txtNotes.Text.Trim()
+                txtNotes.Text.Trim(),
+                chkIsAvailable.Checked
             );
 
             // confirmação
@@ -72,19 +107,47 @@ namespace TocaAi.App.Pages
             {
                 try
                 {
-                    // usa o método específico, passando o DTO e o OwnerId
-                    _equipmentService.Announce(inputModel, UserSession.CurrentUser.Id);
+                    if (_editId.HasValue)
+                    {
+                        // modo de edição
+                        var eq = new Equipment(
+                            _editId.Value,
+                            UserSession.CurrentUser.Id,
+                            inputModel.Name,
+                            inputModel.Type,
+                            inputModel.Brand,
+                            inputModel.Model,
+                            inputModel.SerialNumber,
+                            inputModel.Description,
+                            inputModel.DailyRate,
+                            inputModel.AcquisitionDate,
+                            inputModel.ConservationStatus,
+                            inputModel.Notes,
+                            inputModel.IsAvailable
+                        //_isAvailableOriginal
+                        );
 
-                    MessageBox.Show(
-                        "Equipamento anunciado com sucesso. Está disponível para aluguel.",
-                        "Anúncio Concluído",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Information
-                    );
+                        _equipmentService.UpdateEquipment(_editId.Value, eq);
+                        MessageBox.Show("Anúncio atualizado com sucesso.");
+                    }
+                    else
+                    {
+                        // modo de criação
+                        // usa o método específico, passando o DTO e o OwnerId
+                        _equipmentService.Announce(inputModel, UserSession.CurrentUser.Id);
 
+                        MessageBox.Show(
+                            "Equipamento anunciado com sucesso. Está disponível para aluguel.",
+                            "Anúncio Concluído",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Information
+                        );
+                    }
+
+                    this.DialogResult = DialogResult.OK;
                     this.Close();
                 }
-                catch(ValidationException ex)
+                catch (ValidationException ex)
                 {
                     MessageBox.Show(ex.Errors.First().ErrorMessage, "Erro de validação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }

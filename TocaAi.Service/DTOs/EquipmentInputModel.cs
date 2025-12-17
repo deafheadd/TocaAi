@@ -10,6 +10,7 @@
         decimal DailyRate,
         DateTime AcquisitionDate,
         ConservationStatus ConservationStatus,
-        string? Notes
+        string? Notes,
+        bool IsAvailable = true
     );
 }

@@ -44,7 +44,7 @@
             labelEdit5 = new ReaLTaiizor.Controls.LabelEdit();
             txtNotes = new ReaLTaiizor.Controls.HopeTextBox();
             labelEdit6 = new ReaLTaiizor.Controls.LabelEdit();
-            chkAvailable = new ReaLTaiizor.Controls.HopeCheckBox();
+            chkIsAvailable = new ReaLTaiizor.Controls.HopeCheckBox();
             btnPostAd = new ReaLTaiizor.Controls.Button();
             ((System.ComponentModel.ISupportInitialize)numericUpDownDailyRate).BeginInit();
             SuspendLayout();
@@ -111,6 +111,7 @@
             // 
             numericUpDownDailyRate.ForeColor = Color.DimGray;
             numericUpDownDailyRate.Location = new Point(959, 267);
+            numericUpDownDailyRate.Maximum = new decimal(new int[] { 999999, 0, 0, 0 });
             numericUpDownDailyRate.Name = "numericUpDownDailyRate";
             numericUpDownDailyRate.Size = new Size(152, 34);
             numericUpDownDailyRate.TabIndex = 21;
@@ -301,24 +302,24 @@
             labelEdit6.TabIndex = 33;
             labelEdit6.Text = "Observações:";
             // 
-            // chkAvailable
+            // chkIsAvailable
             // 
-            chkAvailable.AutoSize = true;
-            chkAvailable.CheckedColor = Color.FromArgb(64, 158, 255);
-            chkAvailable.DisabledColor = Color.FromArgb(196, 198, 202);
-            chkAvailable.DisabledStringColor = Color.FromArgb(186, 187, 189);
-            chkAvailable.Enable = true;
-            chkAvailable.EnabledCheckedColor = Color.FromArgb(64, 158, 255);
-            chkAvailable.EnabledStringColor = Color.FromArgb(153, 153, 153);
-            chkAvailable.EnabledUncheckedColor = Color.FromArgb(156, 158, 161);
-            chkAvailable.Font = new Font("Segoe UI", 12F);
-            chkAvailable.ForeColor = Color.DimGray;
-            chkAvailable.Location = new Point(784, 657);
-            chkAvailable.Name = "chkAvailable";
-            chkAvailable.Size = new Size(129, 20);
-            chkAvailable.TabIndex = 34;
-            chkAvailable.Text = "Disponível";
-            chkAvailable.UseVisualStyleBackColor = true;
+            chkIsAvailable.AutoSize = true;
+            chkIsAvailable.CheckedColor = Color.FromArgb(64, 158, 255);
+            chkIsAvailable.DisabledColor = Color.FromArgb(196, 198, 202);
+            chkIsAvailable.DisabledStringColor = Color.FromArgb(186, 187, 189);
+            chkIsAvailable.Enable = true;
+            chkIsAvailable.EnabledCheckedColor = Color.FromArgb(64, 158, 255);
+            chkIsAvailable.EnabledStringColor = Color.FromArgb(153, 153, 153);
+            chkIsAvailable.EnabledUncheckedColor = Color.FromArgb(156, 158, 161);
+            chkIsAvailable.Font = new Font("Segoe UI", 12F);
+            chkIsAvailable.ForeColor = Color.DimGray;
+            chkIsAvailable.Location = new Point(784, 657);
+            chkIsAvailable.Name = "chkIsAvailable";
+            chkIsAvailable.Size = new Size(129, 20);
+            chkIsAvailable.TabIndex = 34;
+            chkIsAvailable.Text = "Disponível";
+            chkIsAvailable.UseVisualStyleBackColor = true;
             // 
             // btnPostAd
             // 
@@ -348,7 +349,7 @@
             BorderColor = Color.Transparent;
             ClientSize = new Size(1152, 720);
             Controls.Add(btnPostAd);
-            Controls.Add(chkAvailable);
+            Controls.Add(chkIsAvailable);
             Controls.Add(labelEdit6);
             Controls.Add(txtNotes);
             Controls.Add(labelEdit5);
@@ -392,7 +393,7 @@
         private ReaLTaiizor.Controls.LabelEdit labelEdit5;
         private ReaLTaiizor.Controls.HopeTextBox txtNotes;
         private ReaLTaiizor.Controls.LabelEdit labelEdit6;
-        private ReaLTaiizor.Controls.HopeCheckBox chkAvailable;
+        private ReaLTaiizor.Controls.HopeCheckBox chkIsAvailable;
         private ReaLTaiizor.Controls.Button btnPostAd;
     }
 }

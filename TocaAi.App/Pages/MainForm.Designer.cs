@@ -33,6 +33,7 @@
             btnRent = new ReaLTaiizor.Controls.Button();
             dgvAllAds = new DataGridView();
             tpMyAds = new TabPage();
+            btnEditAd = new ReaLTaiizor.Controls.Button();
             btnDeleteAd = new ReaLTaiizor.Controls.Button();
             dgvMyAds = new DataGridView();
             btnCreateAd = new ReaLTaiizor.Controls.Button();
@@ -137,6 +138,7 @@
             // tpMyAds
             // 
             tpMyAds.BackColor = Color.White;
+            tpMyAds.Controls.Add(btnEditAd);
             tpMyAds.Controls.Add(btnDeleteAd);
             tpMyAds.Controls.Add(dgvMyAds);
             tpMyAds.Controls.Add(btnCreateAd);
@@ -146,6 +148,26 @@
             tpMyAds.Size = new Size(970, 674);
             tpMyAds.TabIndex = 3;
             tpMyAds.Text = "Meus Anúncios";
+            // 
+            // btnEditAd
+            // 
+            btnEditAd.BackColor = Color.Transparent;
+            btnEditAd.BorderColor = Color.SaddleBrown;
+            btnEditAd.EnteredBorderColor = Color.SaddleBrown;
+            btnEditAd.EnteredColor = Color.Chocolate;
+            btnEditAd.Font = new Font("Lato", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnEditAd.Image = null;
+            btnEditAd.ImageAlign = ContentAlignment.MiddleLeft;
+            btnEditAd.InactiveColor = Color.DarkOrange;
+            btnEditAd.Location = new Point(353, 33);
+            btnEditAd.Name = "btnEditAd";
+            btnEditAd.PressedBorderColor = Color.SaddleBrown;
+            btnEditAd.PressedColor = Color.Chocolate;
+            btnEditAd.Size = new Size(274, 56);
+            btnEditAd.TabIndex = 3;
+            btnEditAd.Text = "Editar Anúncio";
+            btnEditAd.TextAlignment = StringAlignment.Center;
+            btnEditAd.Click += btnEditAd_Click;
             // 
             // btnDeleteAd
             // 
@@ -157,7 +179,7 @@
             btnDeleteAd.Image = null;
             btnDeleteAd.ImageAlign = ContentAlignment.MiddleLeft;
             btnDeleteAd.InactiveColor = Color.OrangeRed;
-            btnDeleteAd.Location = new Point(336, 33);
+            btnDeleteAd.Location = new Point(659, 33);
             btnDeleteAd.Name = "btnDeleteAd";
             btnDeleteAd.PressedBorderColor = Color.SaddleBrown;
             btnDeleteAd.PressedColor = Color.DarkRed;
@@ -480,5 +502,6 @@
         private ReaLTaiizor.Controls.Button btnRent;
         private TabPage tpMyRentals;
         private DataGridView dgvMyRentals;
+        private ReaLTaiizor.Controls.Button btnEditAd;
     }
 }

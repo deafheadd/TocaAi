@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using ReaLTaiizor.Forms;
 using TocaAi.App.Session;
+using TocaAi.Domain.Entities;
 using TocaAi.Domain.ValueObjects;
 using TocaAi.Service.Interfaces;
 
@@ -429,6 +430,45 @@ namespace TocaAi.App.Pages
                         MessageBox.Show("Erro real do banco: " + realError);
                     }
                 }
+            }
+        }
+
+        private void btnEditAd_Click(object sender, EventArgs e)
+        {
+            // verifica linha selecionada
+            if (dgvMyAds.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Selecione um anúncio para editar.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // id do equipamento selecionado
+            var equipmentId = (Guid)dgvMyAds.SelectedRows[0].Cells["Id"].Value;
+
+            try
+            {
+                var equipment = _equipmentService.GetById<Equipment>(equipmentId);
+
+                if (equipment == null)
+                {
+                    MessageBox.Show("Equipamento não encontrado.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                // abre o CreateAdForm usando o construtor de edição
+                using (var editForm = new CreateAdForm(_equipmentService, equipment))
+                {
+                    // salvar
+                    if (editForm.ShowDialog() == DialogResult.OK)
+                    {
+                        // atualizar
+                        LoadMyAdsList();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erro ao carregar dados: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

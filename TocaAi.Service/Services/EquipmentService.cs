@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using System.ComponentModel.DataAnnotations;
+using AutoMapper;
 using TocaAi.Domain.Base;
 using TocaAi.Domain.Entities;
 using TocaAi.Domain.Validators;
@@ -12,7 +13,7 @@ namespace TocaAi.Service.Services
         public EquipmentService(IBaseRepository<Equipment, Guid> baseRepository, IMapper mapper) : base(baseRepository, mapper)
         {
         }
-        
+
         public void Announce(EquipmentInputModel inputModel, Guid ownerId)
         {
             var equipmentEntity = _mapper.Map<Equipment>(inputModel);
@@ -37,6 +38,40 @@ namespace TocaAi.Service.Services
             var allEquipmentList = _baseRepository.Select();
 
             return _mapper.Map<IList<EquipmentOutputModel>>(allEquipmentList);
+        }
+
+        public void UpdateEquipment(Guid id, Equipment eqInput)
+        {
+            var equipment = _baseRepository.SelectById(id);
+
+            if (equipment == null)
+            {
+                throw new Exception("Equipamento não encontrado.");
+            }
+
+            // atualiza os dados na entidade
+            equipment.UpdateDetails(
+                eqInput.Name,
+                eqInput.Brand,
+                eqInput.Model,
+                eqInput.Description,
+                eqInput.DailyRate,
+                eqInput.Type,
+                eqInput.ConservationStatus,
+                eqInput.Notes
+            );
+
+            // valida com o validator
+            var validator = new EquipmentValidator();
+            var validationResult = validator.Validate(equipment);
+
+            if (!validationResult.IsValid)
+            {
+                throw new ValidationException(validationResult.Errors[0].ErrorMessage);
+            }
+
+            // salva
+            _baseRepository.Update(equipment);
         }
 
         public void Delete(Guid equipmentId, Guid ownerId)
