@@ -8,8 +8,8 @@ namespace TocaAi.Service.Services
     public class BaseService<TEntity, TId> : IBaseService<TEntity, TId>
         where TEntity : class, IBaseEntity<TId>
     {
-        private readonly IBaseRepository<TEntity, TId> _baseRepository;
-        private readonly IMapper _mapper;
+        protected readonly IBaseRepository<TEntity, TId> _baseRepository;
+        protected readonly IMapper _mapper;
 
         public BaseService(IBaseRepository<TEntity, TId> baseRepository, IMapper mapper)
         {
@@ -67,7 +67,7 @@ namespace TocaAi.Service.Services
             return _mapper.Map<TOutputModel>(entity);
         }
 
-        private void Validate(TEntity entity, AbstractValidator<TEntity> validator)
+        protected void Validate(TEntity entity, AbstractValidator<TEntity> validator)
         {
             if (entity == null)
                 throw new Exception("Invalid entity.");

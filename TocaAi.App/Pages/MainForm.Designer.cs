@@ -31,8 +31,8 @@
             tabPageMain = new ReaLTaiizor.Controls.AirTabPage();
             tpEquipment = new TabPage();
             flowLayoutPanel1 = new FlowLayoutPanel();
-            tpCreateAd = new TabPage();
             tpMyAds = new TabPage();
+            btnCreateAd = new ReaLTaiizor.Controls.Button();
             tpProfile = new TabPage();
             gpBoxAddress = new ReaLTaiizor.Controls.HopeGroupBox();
             lblComplement = new ReaLTaiizor.Controls.LabelEdit();
@@ -52,6 +52,7 @@
             lblName = new ReaLTaiizor.Controls.LabelEdit();
             tabPageMain.SuspendLayout();
             tpEquipment.SuspendLayout();
+            tpMyAds.SuspendLayout();
             tpProfile.SuspendLayout();
             gpBoxAddress.SuspendLayout();
             gpBoxPersonalInfo.SuspendLayout();
@@ -63,7 +64,6 @@
             tabPageMain.Alignment = TabAlignment.Left;
             tabPageMain.BaseColor = Color.WhiteSmoke;
             tabPageMain.Controls.Add(tpEquipment);
-            tabPageMain.Controls.Add(tpCreateAd);
             tabPageMain.Controls.Add(tpMyAds);
             tabPageMain.Controls.Add(tpProfile);
             tabPageMain.Dock = DockStyle.Fill;
@@ -104,24 +104,36 @@
             flowLayoutPanel1.Size = new Size(964, 668);
             flowLayoutPanel1.TabIndex = 0;
             // 
-            // tpCreateAd
-            // 
-            tpCreateAd.BackColor = Color.White;
-            tpCreateAd.Location = new Point(174, 4);
-            tpCreateAd.Name = "tpCreateAd";
-            tpCreateAd.Size = new Size(970, 674);
-            tpCreateAd.TabIndex = 2;
-            tpCreateAd.Text = "Anunciar";
-            // 
             // tpMyAds
             // 
             tpMyAds.BackColor = Color.White;
+            tpMyAds.Controls.Add(btnCreateAd);
             tpMyAds.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             tpMyAds.Location = new Point(174, 4);
             tpMyAds.Name = "tpMyAds";
             tpMyAds.Size = new Size(970, 674);
             tpMyAds.TabIndex = 3;
             tpMyAds.Text = "Meus Anúncios";
+            // 
+            // btnCreateAd
+            // 
+            btnCreateAd.BackColor = Color.Transparent;
+            btnCreateAd.BorderColor = Color.SaddleBrown;
+            btnCreateAd.EnteredBorderColor = Color.SaddleBrown;
+            btnCreateAd.EnteredColor = Color.Chocolate;
+            btnCreateAd.Font = new Font("Lato", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnCreateAd.Image = null;
+            btnCreateAd.ImageAlign = ContentAlignment.MiddleLeft;
+            btnCreateAd.InactiveColor = Color.DarkOrange;
+            btnCreateAd.Location = new Point(43, 33);
+            btnCreateAd.Name = "btnCreateAd";
+            btnCreateAd.PressedBorderColor = Color.SaddleBrown;
+            btnCreateAd.PressedColor = Color.Chocolate;
+            btnCreateAd.Size = new Size(274, 56);
+            btnCreateAd.TabIndex = 0;
+            btnCreateAd.Text = "Criar Novo Anúncio";
+            btnCreateAd.TextAlignment = StringAlignment.Center;
+            btnCreateAd.Click += btnCreateAd_Click;
             // 
             // tpProfile
             // 
@@ -200,7 +212,7 @@
             btnEditAddress.BorderColor = Color.SaddleBrown;
             btnEditAddress.EnteredBorderColor = Color.SaddleBrown;
             btnEditAddress.EnteredColor = Color.Chocolate;
-            btnEditAddress.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnEditAddress.Font = new Font("Lato", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnEditAddress.Image = null;
             btnEditAddress.ImageAlign = ContentAlignment.MiddleLeft;
             btnEditAddress.InactiveColor = Color.DarkOrange;
@@ -288,7 +300,7 @@
             btnEditPersonalInfo.BorderColor = Color.SaddleBrown;
             btnEditPersonalInfo.EnteredBorderColor = Color.SaddleBrown;
             btnEditPersonalInfo.EnteredColor = Color.Chocolate;
-            btnEditPersonalInfo.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnEditPersonalInfo.Font = new Font("Lato", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnEditPersonalInfo.Image = null;
             btnEditPersonalInfo.ImageAlign = ContentAlignment.MiddleLeft;
             btnEditPersonalInfo.InactiveColor = Color.DarkOrange;
@@ -376,6 +388,7 @@
             Load += MainForm_Load;
             tabPageMain.ResumeLayout(false);
             tpEquipment.ResumeLayout(false);
+            tpMyAds.ResumeLayout(false);
             tpProfile.ResumeLayout(false);
             gpBoxAddress.ResumeLayout(false);
             gpBoxAddress.PerformLayout();
@@ -407,7 +420,7 @@
         private ReaLTaiizor.Controls.LabelEdit lblState;
         private ReaLTaiizor.Controls.LabelEdit lblNumber;
         private FlowLayoutPanel flowLayoutPanel1;
-        private TabPage tpCreateAd;
         private TabPage tpMyAds;
+        private ReaLTaiizor.Controls.Button btnCreateAd;
     }
 }

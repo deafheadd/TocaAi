@@ -1,4 +1,5 @@
-﻿using ReaLTaiizor.Forms;
+﻿using Microsoft.Extensions.DependencyInjection;
+using ReaLTaiizor.Forms;
 using TocaAi.App.Session;
 
 namespace TocaAi.App.Pages
@@ -29,10 +30,9 @@ namespace TocaAi.App.Pages
                     tabPageMain.SelectedIndex = 0; // aba Equipamentos como inicial
                     break;
                 case UserRole.Seller:
-                    tabPageMain.Controls.Add(tpCreateAd);
                     tabPageMain.Controls.Add(tpMyAds);
                     tabPageMain.Controls.Add(tpProfile);
-                    tabPageMain.SelectedIndex = 1; // aba Meus Anúncios como inicial
+                    tabPageMain.SelectedIndex = 0; // aba Meus Anúncios como inicial
                     break;
             }
         }
@@ -68,6 +68,24 @@ namespace TocaAi.App.Pages
         private void MainForm_Load(object sender, EventArgs e)
         {
             LoadUserProfileData();
+        }
+
+        private void btnCreateAd_Click(object sender, EventArgs e)
+        {
+            var createAdForm = Program.ServiceProvider.GetRequiredService<CreateAdForm>();
+
+            createAdForm.StartPosition = FormStartPosition.Manual;
+            createAdForm.Location = new Point(
+                this.Location.X + (this.Width - createAdForm.Width) / 2,
+                this.Location.Y + (this.Height - createAdForm.Height) / 2
+            );
+            createAdForm.FormClosed += (s, args) =>
+            {
+                this.Show();
+                // LoadMyAdsList();
+            };
+
+            createAdForm.Show();
         }
     }
 }

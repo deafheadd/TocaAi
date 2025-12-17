@@ -340,7 +340,7 @@
             labelEdit1.AutoSize = true;
             labelEdit1.BackColor = Color.Transparent;
             labelEdit1.Font = new Font("Lato", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            labelEdit1.ForeColor = Color.FromArgb(116, 125, 132);
+            labelEdit1.ForeColor = Color.DimGray;
             labelEdit1.Location = new Point(57, 56);
             labelEdit1.Name = "labelEdit1";
             labelEdit1.Size = new Size(273, 21);

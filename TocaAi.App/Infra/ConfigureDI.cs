@@ -11,6 +11,7 @@ using TocaAi.Domain.Interfaces;
 using TocaAi.Domain.Validators;
 using TocaAi.Repository.Context;
 using TocaAi.Repository.Repository;
+using TocaAi.Service.DTOs;
 using TocaAi.Service.Interfaces;
 using TocaAi.Service.Services;
 
@@ -47,6 +48,7 @@ namespace TocaAi.App.Infra
             services.AddScoped<IBaseService<Person, Guid>, BaseService<Person, Guid>>();
             services.AddScoped<IBaseService<Equipment, Guid>, BaseService<Equipment, Guid>>();
             services.AddScoped<IBaseService<Rental, Guid>, BaseService<Rental, Guid>>();
+            services.AddScoped<IEquipmentService, EquipmentService>();
             #endregion
 
             services.AddLogging();
@@ -55,6 +57,7 @@ namespace TocaAi.App.Infra
             services.AddScoped<IValidator<UserAccount>, UserAccountValidator>();
             services.AddScoped<IValidator<Person>, PersonValidator>();
             services.AddScoped<IValidator<RegisterUserModel>, RegisterUserModelValidator>();
+            services.AddScoped<IValidator<Equipment>, EquipmentValidator>();
             #endregion
 
             #region Mappers
@@ -68,8 +71,10 @@ namespace TocaAi.App.Infra
                     .ForMember(d => d.City, o => o.MapFrom(s => s.Address.City))
                     .ForMember(d => d.State, o => o.MapFrom(s => s.Address.State))
                     .ForMember(d => d.PostalCode, o => o.MapFrom(s => s.Address.PostalCode));
-                config.CreateMap<Equipment, EquipmentModel>()
+                config.CreateMap<Equipment, EquipmentOutputModel>()
                     .ForMember(d => d.OwnerEmail, o => o.MapFrom(s => s.Owner.Email));
+                // mapeamento de entrada
+                config.CreateMap<EquipmentInputModel, Equipment>();
                 config.CreateMap<Rental, RentalModel>();
             });
             #endregion
@@ -78,6 +83,7 @@ namespace TocaAi.App.Infra
             services.AddTransient<LoginForm>();
             services.AddTransient<RegisterForm>();
             services.AddTransient<MainForm>();
+            services.AddTransient<CreateAdForm>();
             #endregion
 
             //serviceProvider = services.BuildServiceProvider();

@@ -22,7 +22,7 @@ namespace TocaAi.App.Pages
 
         public RegisterForm(
             IBaseRepository<UserAccount, Guid> userAccountRepository,
-            IBaseRepository<Person,Guid> personRepository,
+            IBaseRepository<Person, Guid> personRepository,
             IValidator<Person> personValidator,
             IValidator<UserAccount> userAccountValidator,
             IValidator<RegisterUserModel> registerUserValidator)
@@ -51,76 +51,106 @@ namespace TocaAi.App.Pages
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
-            try
+            if (!radioCustomer.Checked && !radioSeller.Checked)
             {
-                var role = radioCustomer.Checked ? UserRole.Customer : UserRole.Seller;
-
-                // criação de endereço
-                var address = new Address(
-                    txtStreet.Text.Trim(),
-                    txtNumber.Text.Trim(),
-                    txtNeighborhood.Text.Trim(),
-                    txtCity.Text.Trim(),
-                    comboBoxState.Text.Trim(),
-                    txtPostalCode.Text.Trim(),
-                    txtComplement.Text.Trim()
+                MessageBox.Show(
+                    "Selecione o seu tipo de conta (Cliente ou Vendedor).",
+                    "Atenção",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
                 );
-
-                // criação de pessoa
-                var person = new Person(
-                    Guid.NewGuid(),
-                    txtName.Text.Trim(),
-                    txtDocument.Text.Trim(),
-                    txtPhoneNumber.Text.Trim(),
-                    address,
-                    DateTime.Now
-                );
-
-                var personResult = _personValidator.Validate(person);
-                if (!personResult.IsValid)
-                {
-                    MessageBox.Show(personResult.Errors.First().ErrorMessage, "Erro de validação.");
-                    return;
-                }
-                // confirmação de senha
-                var registerModel = new RegisterUserModel(
-                    txtPassword.Text.Trim(),
-                    txtConfirmPassword.Text.Trim()
-                );
-
-                var registerResult = _registerUserValidator.Validate(registerModel);
-                if (!registerResult.IsValid)
-                {
-                    MessageBox.Show(registerResult.Errors.First().ErrorMessage, "Erro de validação.");
-                    return;
-                }
-
-                // criação de usuário
-                var user = new UserAccount(
-                    Guid.NewGuid(),
-                    txtUsername.Text.Trim(),
-                    txtEmail.Text.Trim(),
-                    txtPassword.Text.Trim(),
-                    role,
-                    person
-                 );
-
-                var userResult = _userAccountValidator.Validate(user);
-                if (!userResult.IsValid)
-                {
-                    MessageBox.Show(userResult.Errors.First().ErrorMessage, "Erro de validação.");
-                    return;
-                }
-
-                // salvar cliente
-                _userAccountRepository.Insert(user);
-                MessageBox.Show("Usuário registrado com sucesso");
-
-                this.Close();
+                return;
             }
-            catch (Exception ex)
+
+            var role = radioCustomer.Checked ? UserRole.Customer : UserRole.Seller;
+
+            // criação de endereço
+            var address = new Address(
+                txtStreet.Text.Trim(),
+                txtNumber.Text.Trim(),
+                txtNeighborhood.Text.Trim(),
+                txtCity.Text.Trim(),
+                comboBoxState.Text.Trim(),
+                txtPostalCode.Text.Trim(),
+                txtComplement.Text.Trim()
+            );
+
+            // criação de pessoa
+            var person = new Person(
+                Guid.NewGuid(),
+                txtName.Text.Trim(),
+                txtDocument.Text.Trim(),
+                txtPhoneNumber.Text.Trim(),
+                address,
+                DateTime.Now
+            );
+
+            // confirmação de senha
+            var registerModel = new RegisterUserModel(
+                txtPassword.Text.Trim(),
+                txtConfirmPassword.Text.Trim()
+            );
+
+            // validações iniciais
+            var personResult = _personValidator.Validate(person);
+            if (!personResult.IsValid)
             {
-                MessageBox.Show($"Erro ao salvar: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(personResult.Errors.First().ErrorMessage, "Erro de validação.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            var registerResult = _registerUserValidator.Validate(registerModel);
+            if (!registerResult.IsValid)
+            {
+                MessageBox.Show(registerResult.Errors.First().ErrorMessage, "Erro de validação.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // criação e validação de usuário
+            var user = new UserAccount(
+                Guid.NewGuid(),
+                txtUsername.Text.Trim(),
+                txtEmail.Text.Trim(),
+                txtPassword.Text.Trim(),
+                role,
+                person
+             );
+
+            var userResult = _userAccountValidator.Validate(user);
+            if (!userResult.IsValid)
+            {
+                MessageBox.Show(userResult.Errors.First().ErrorMessage, "Erro de validação.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // confirmação
+            DialogResult confirmationResult = MessageBox.Show(
+                "Confirma que os dados inseridos estão corretos antes de finalizar o cadastro?",
+                "Confirmação de Dados",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (confirmationResult == DialogResult.Yes)
+            {
+                try
+                {
+                    // salvar
+                    _userAccountRepository.Insert(user);
+
+                    MessageBox.Show(
+                        "Usuário registrado com sucesso. Prossiga para o login.",
+                        "Cadastro Finalizado",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information
+                    );
+
+                    this.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Erro ao salvar: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 

@@ -1,9 +1,6 @@
-﻿namespace TocaAi.App.ViewModels
+﻿namespace TocaAi.Service.DTOs
 {
-    public record EquipmentModel(
-        Guid Id,
-        Guid OwnerId,
-        string OwnerEmail,
+    public record EquipmentInputModel(
         string Name,
         EquipmentType Type,
         string Brand,
@@ -13,7 +10,6 @@
         decimal DailyRate,
         DateTime AcquisitionDate,
         ConservationStatus ConservationStatus,
-        string? Notes,
-        bool IsAvailable
+        string? Notes
     );
 }

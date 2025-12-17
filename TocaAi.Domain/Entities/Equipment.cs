@@ -44,5 +44,13 @@ namespace TocaAi.Domain.Entities
         public void MarkAsUnavaiable() => IsAvailable = false;
         public void MarkAsAvaiable() => IsAvailable = true;
 
+        // permite ao serviço definir o ID
+        public void SetOwnerId(Guid ownerId)
+        {
+            if (ownerId == Guid.Empty)
+                throw new ArgumentException("Owner id can not be null.", nameof(ownerId));
+
+            this.OwnerId = ownerId;
+        }
     }
 }
