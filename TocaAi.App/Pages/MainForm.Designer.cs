@@ -30,8 +30,9 @@
         {
             tabPageMain = new ReaLTaiizor.Controls.AirTabPage();
             tpEquipment = new TabPage();
-            flowLayoutPanel1 = new FlowLayoutPanel();
+            dgvAllAds = new DataGridView();
             tpMyAds = new TabPage();
+            dgvMyAds = new DataGridView();
             btnCreateAd = new ReaLTaiizor.Controls.Button();
             tpProfile = new TabPage();
             gpBoxAddress = new ReaLTaiizor.Controls.HopeGroupBox();
@@ -50,9 +51,12 @@
             lblEmail = new ReaLTaiizor.Controls.LabelEdit();
             pbProfilePicture = new ReaLTaiizor.Controls.HopePictureBox();
             lblName = new ReaLTaiizor.Controls.LabelEdit();
+            btnDeleteAd = new ReaLTaiizor.Controls.Button();
             tabPageMain.SuspendLayout();
             tpEquipment.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvAllAds).BeginInit();
             tpMyAds.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvMyAds).BeginInit();
             tpProfile.SuspendLayout();
             gpBoxAddress.SuspendLayout();
             gpBoxPersonalInfo.SuspendLayout();
@@ -82,11 +86,12 @@
             tabPageMain.SquareColor = Color.DarkOrange;
             tabPageMain.TabCursor = Cursors.Hand;
             tabPageMain.TabIndex = 0;
+            tabPageMain.SelectedIndexChanged += tabPageMain_SelectedIndexChanged;
             // 
             // tpEquipment
             // 
             tpEquipment.BackColor = Color.White;
-            tpEquipment.Controls.Add(flowLayoutPanel1);
+            tpEquipment.Controls.Add(dgvAllAds);
             tpEquipment.Location = new Point(174, 4);
             tpEquipment.Name = "tpEquipment";
             tpEquipment.Padding = new Padding(3);
@@ -94,19 +99,22 @@
             tpEquipment.TabIndex = 0;
             tpEquipment.Text = "Equipamentos";
             // 
-            // flowLayoutPanel1
+            // dgvAllAds
             // 
-            flowLayoutPanel1.AutoScroll = true;
-            flowLayoutPanel1.Dock = DockStyle.Fill;
-            flowLayoutPanel1.FlowDirection = FlowDirection.TopDown;
-            flowLayoutPanel1.Location = new Point(3, 3);
-            flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(964, 668);
-            flowLayoutPanel1.TabIndex = 0;
+            dgvAllAds.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvAllAds.BackgroundColor = Color.Silver;
+            dgvAllAds.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvAllAds.Location = new Point(19, 20);
+            dgvAllAds.Name = "dgvAllAds";
+            dgvAllAds.RowHeadersWidth = 51;
+            dgvAllAds.Size = new Size(930, 633);
+            dgvAllAds.TabIndex = 0;
             // 
             // tpMyAds
             // 
             tpMyAds.BackColor = Color.White;
+            tpMyAds.Controls.Add(btnDeleteAd);
+            tpMyAds.Controls.Add(dgvMyAds);
             tpMyAds.Controls.Add(btnCreateAd);
             tpMyAds.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             tpMyAds.Location = new Point(174, 4);
@@ -114,6 +122,17 @@
             tpMyAds.Size = new Size(970, 674);
             tpMyAds.TabIndex = 3;
             tpMyAds.Text = "Meus Anúncios";
+            // 
+            // dgvMyAds
+            // 
+            dgvMyAds.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvMyAds.BackgroundColor = Color.LightGray;
+            dgvMyAds.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvMyAds.Location = new Point(43, 129);
+            dgvMyAds.Name = "dgvMyAds";
+            dgvMyAds.RowHeadersWidth = 51;
+            dgvMyAds.Size = new Size(890, 508);
+            dgvMyAds.TabIndex = 1;
             // 
             // btnCreateAd
             // 
@@ -373,6 +392,26 @@
             lblName.TabIndex = 0;
             lblName.Text = "Nome Completo:";
             // 
+            // btnDeleteAd
+            // 
+            btnDeleteAd.BackColor = Color.Transparent;
+            btnDeleteAd.BorderColor = Color.SaddleBrown;
+            btnDeleteAd.EnteredBorderColor = Color.SaddleBrown;
+            btnDeleteAd.EnteredColor = Color.DarkRed;
+            btnDeleteAd.Font = new Font("Lato", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnDeleteAd.Image = null;
+            btnDeleteAd.ImageAlign = ContentAlignment.MiddleLeft;
+            btnDeleteAd.InactiveColor = Color.OrangeRed;
+            btnDeleteAd.Location = new Point(338, 33);
+            btnDeleteAd.Name = "btnDeleteAd";
+            btnDeleteAd.PressedBorderColor = Color.SaddleBrown;
+            btnDeleteAd.PressedColor = Color.DarkRed;
+            btnDeleteAd.Size = new Size(274, 56);
+            btnDeleteAd.TabIndex = 2;
+            btnDeleteAd.Text = "Deletar Anúncio";
+            btnDeleteAd.TextAlignment = StringAlignment.Center;
+            btnDeleteAd.Click += btnDeleteAd_Click;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
@@ -388,7 +427,9 @@
             Load += MainForm_Load;
             tabPageMain.ResumeLayout(false);
             tpEquipment.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvAllAds).EndInit();
             tpMyAds.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvMyAds).EndInit();
             tpProfile.ResumeLayout(false);
             gpBoxAddress.ResumeLayout(false);
             gpBoxAddress.PerformLayout();
@@ -419,8 +460,10 @@
         private ReaLTaiizor.Controls.LabelEdit lblComplement;
         private ReaLTaiizor.Controls.LabelEdit lblState;
         private ReaLTaiizor.Controls.LabelEdit lblNumber;
-        private FlowLayoutPanel flowLayoutPanel1;
         private TabPage tpMyAds;
         private ReaLTaiizor.Controls.Button btnCreateAd;
+        private DataGridView dgvMyAds;
+        private DataGridView dgvAllAds;
+        private ReaLTaiizor.Controls.Button btnDeleteAd;
     }
 }

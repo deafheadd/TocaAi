@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.Linq.Expressions;
+using Microsoft.EntityFrameworkCore;
 using TocaAi.Domain.Base;
 using TocaAi.Repository.Context;
 
@@ -78,6 +79,29 @@ namespace TocaAi.Repository.Repository
             }
 
             return query.FirstOrDefault(e => e.Id != null && e.Id.Equals(id));
+        }
+
+        // implementação da busca com filtro
+        public IList<TEntity> Select(
+            Expression<Func<TEntity, bool>> predicate,
+            bool tracking = true,
+            IList<string>? includes = null
+        )
+        {
+            IQueryable<TEntity> query = _dbSet;
+
+            if (!tracking)
+                query = query.AsNoTracking();
+
+            if (includes != null)
+            {
+                foreach (var include in includes)
+                    query = query.Include(include);
+            }
+
+            query = query.Where(predicate);
+
+            return query.ToList();
         }
     }
 }
