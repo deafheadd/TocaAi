@@ -8,10 +8,12 @@ namespace TocaAi.App.Pages
     public partial class MainForm : LostForm
     {
         private readonly IEquipmentService _equipmentService;
-        public MainForm(IEquipmentService equipmentService)
+        private readonly IRentalService _rentalService;
+        public MainForm(IEquipmentService equipmentService, IRentalService rentalService)
         {
             InitializeComponent();
             _equipmentService = equipmentService;
+            _rentalService = rentalService;
         }
 
         // configurar exibição de TabPages por Role
@@ -29,6 +31,7 @@ namespace TocaAi.App.Pages
             {
                 case UserRole.Customer:
                     tabPageMain.Controls.Add(tpEquipment);
+                    tabPageMain.Controls.Add(tpMyRentals);
                     tabPageMain.Controls.Add(tpProfile);
                     tabPageMain.SelectedIndex = 0; // aba Equipamentos como inicial
                     break;
@@ -222,6 +225,32 @@ namespace TocaAi.App.Pages
                 MessageBox.Show($"Erro ao carregar: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        private void LoadMyRentals()
+        {
+            try
+            {
+                var customerId = UserSession.CurrentUser.Id;
+
+                var myRentals = _rentalService.GetMyRentals(customerId);
+
+                dgvMyRentals.DataSource = myRentals;
+
+                if (dgvMyRentals.Columns.Contains("Id"))
+                {
+                    dgvMyRentals.Columns["Id"].Visible = false;
+                }
+                if (dgvMyRentals.Columns.Contains("UserAccountId"))
+                {
+                    dgvMyRentals.Columns["UserAccountId"].Visible = false;
+                }
+
+                dgvMyRentals.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erro ao carregar seus aluguéis: {ex.Message}");
+            }
+        }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
@@ -261,6 +290,10 @@ namespace TocaAi.App.Pages
             else if (tabPageMain.SelectedTab == tpEquipment)
             {
                 LoadAvailableEquipment();
+            }
+            else if (tabPageMain.SelectedTab == tpMyRentals)
+            {
+                LoadMyRentals();
             }
         }
 
@@ -306,6 +339,55 @@ namespace TocaAi.App.Pages
                     MessageBox.Show($"Erro ao excluir: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private void btnRent_Click(object sender, EventArgs e)
+        {
+            // vrificar se algum equipamento está selecionado
+            if (dgvAllAds.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Selecione um equipamento na tabela para alugar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // abrir form de detalhes
+            using (var detailsForm = new RentalDetailsForm())
+            {
+                detailsForm.StartPosition = FormStartPosition.CenterParent;
+
+                if (detailsForm.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        // pegar ID do equipamento da linha selecionada
+                        var row = dgvAllAds.SelectedRows[0];
+                        Guid equipmentId = (Guid)row.Cells["Id"].Value;
+                        Guid customerId = UserSession.CurrentUser.Id;
+
+                        _rentalService.Rent(
+                            equipmentId,
+                            customerId,
+                            detailsForm.SelectedReturnDate,
+                            detailsForm.SelectedPaymentMethod,
+                            ""
+                        );
+
+                        MessageBox.Show("Aluguel realizado com sucesso.", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        // atualizar equipamentos
+                        LoadAvailableEquipment();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Erro ao processar: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
+
+        private void btnEditPersonalInfo_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

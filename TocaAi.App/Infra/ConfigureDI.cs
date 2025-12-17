@@ -49,6 +49,7 @@ namespace TocaAi.App.Infra
             services.AddScoped<IBaseService<Equipment, Guid>, BaseService<Equipment, Guid>>();
             services.AddScoped<IBaseService<Rental, Guid>, BaseService<Rental, Guid>>();
             services.AddScoped<IEquipmentService, EquipmentService>();
+            services.AddScoped<IRentalService, RentalService>();
             #endregion
 
             services.AddLogging();

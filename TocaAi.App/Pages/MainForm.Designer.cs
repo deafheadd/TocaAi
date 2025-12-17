@@ -30,10 +30,14 @@
         {
             tabPageMain = new ReaLTaiizor.Controls.AirTabPage();
             tpEquipment = new TabPage();
+            btnRent = new ReaLTaiizor.Controls.Button();
             dgvAllAds = new DataGridView();
             tpMyAds = new TabPage();
+            btnDeleteAd = new ReaLTaiizor.Controls.Button();
             dgvMyAds = new DataGridView();
             btnCreateAd = new ReaLTaiizor.Controls.Button();
+            tpMyRentals = new TabPage();
+            dgvMyRentals = new DataGridView();
             tpProfile = new TabPage();
             gpBoxAddress = new ReaLTaiizor.Controls.HopeGroupBox();
             lblComplement = new ReaLTaiizor.Controls.LabelEdit();
@@ -49,18 +53,17 @@
             lblPhone = new ReaLTaiizor.Controls.LabelEdit();
             lblDocument = new ReaLTaiizor.Controls.LabelEdit();
             lblEmail = new ReaLTaiizor.Controls.LabelEdit();
-            pbProfilePicture = new ReaLTaiizor.Controls.HopePictureBox();
             lblName = new ReaLTaiizor.Controls.LabelEdit();
-            btnDeleteAd = new ReaLTaiizor.Controls.Button();
             tabPageMain.SuspendLayout();
             tpEquipment.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvAllAds).BeginInit();
             tpMyAds.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvMyAds).BeginInit();
+            tpMyRentals.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvMyRentals).BeginInit();
             tpProfile.SuspendLayout();
             gpBoxAddress.SuspendLayout();
             gpBoxPersonalInfo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pbProfilePicture).BeginInit();
             SuspendLayout();
             // 
             // tabPageMain
@@ -69,6 +72,7 @@
             tabPageMain.BaseColor = Color.WhiteSmoke;
             tabPageMain.Controls.Add(tpEquipment);
             tabPageMain.Controls.Add(tpMyAds);
+            tabPageMain.Controls.Add(tpMyRentals);
             tabPageMain.Controls.Add(tpProfile);
             tabPageMain.Dock = DockStyle.Fill;
             tabPageMain.DrawMode = TabDrawMode.OwnerDrawFixed;
@@ -91,6 +95,7 @@
             // tpEquipment
             // 
             tpEquipment.BackColor = Color.White;
+            tpEquipment.Controls.Add(btnRent);
             tpEquipment.Controls.Add(dgvAllAds);
             tpEquipment.Location = new Point(174, 4);
             tpEquipment.Name = "tpEquipment";
@@ -99,15 +104,35 @@
             tpEquipment.TabIndex = 0;
             tpEquipment.Text = "Equipamentos";
             // 
+            // btnRent
+            // 
+            btnRent.BackColor = Color.Transparent;
+            btnRent.BorderColor = Color.SaddleBrown;
+            btnRent.EnteredBorderColor = Color.SaddleBrown;
+            btnRent.EnteredColor = Color.Chocolate;
+            btnRent.Font = new Font("Lato", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnRent.Image = null;
+            btnRent.ImageAlign = ContentAlignment.MiddleLeft;
+            btnRent.InactiveColor = Color.DarkOrange;
+            btnRent.Location = new Point(43, 31);
+            btnRent.Name = "btnRent";
+            btnRent.PressedBorderColor = Color.SaddleBrown;
+            btnRent.PressedColor = Color.Chocolate;
+            btnRent.Size = new Size(274, 56);
+            btnRent.TabIndex = 1;
+            btnRent.Text = "Alugar Equipamento";
+            btnRent.TextAlignment = StringAlignment.Center;
+            btnRent.Click += btnRent_Click;
+            // 
             // dgvAllAds
             // 
             dgvAllAds.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            dgvAllAds.BackgroundColor = Color.Silver;
+            dgvAllAds.BackgroundColor = Color.LightGray;
             dgvAllAds.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvAllAds.Location = new Point(19, 20);
+            dgvAllAds.Location = new Point(43, 123);
             dgvAllAds.Name = "dgvAllAds";
             dgvAllAds.RowHeadersWidth = 51;
-            dgvAllAds.Size = new Size(930, 633);
+            dgvAllAds.Size = new Size(890, 508);
             dgvAllAds.TabIndex = 0;
             // 
             // tpMyAds
@@ -122,6 +147,26 @@
             tpMyAds.Size = new Size(970, 674);
             tpMyAds.TabIndex = 3;
             tpMyAds.Text = "Meus Anúncios";
+            // 
+            // btnDeleteAd
+            // 
+            btnDeleteAd.BackColor = Color.Transparent;
+            btnDeleteAd.BorderColor = Color.SaddleBrown;
+            btnDeleteAd.EnteredBorderColor = Color.SaddleBrown;
+            btnDeleteAd.EnteredColor = Color.DarkRed;
+            btnDeleteAd.Font = new Font("Lato", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnDeleteAd.Image = null;
+            btnDeleteAd.ImageAlign = ContentAlignment.MiddleLeft;
+            btnDeleteAd.InactiveColor = Color.OrangeRed;
+            btnDeleteAd.Location = new Point(338, 33);
+            btnDeleteAd.Name = "btnDeleteAd";
+            btnDeleteAd.PressedBorderColor = Color.SaddleBrown;
+            btnDeleteAd.PressedColor = Color.DarkRed;
+            btnDeleteAd.Size = new Size(274, 56);
+            btnDeleteAd.TabIndex = 2;
+            btnDeleteAd.Text = "Deletar Anúncio";
+            btnDeleteAd.TextAlignment = StringAlignment.Center;
+            btnDeleteAd.Click += btnDeleteAd_Click;
             // 
             // dgvMyAds
             // 
@@ -153,6 +198,26 @@
             btnCreateAd.Text = "Criar Novo Anúncio";
             btnCreateAd.TextAlignment = StringAlignment.Center;
             btnCreateAd.Click += btnCreateAd_Click;
+            // 
+            // tpMyRentals
+            // 
+            tpMyRentals.BackColor = Color.White;
+            tpMyRentals.Controls.Add(dgvMyRentals);
+            tpMyRentals.Location = new Point(174, 4);
+            tpMyRentals.Name = "tpMyRentals";
+            tpMyRentals.Size = new Size(970, 674);
+            tpMyRentals.TabIndex = 4;
+            tpMyRentals.Text = "Meus Aluguéis";
+            // 
+            // dgvMyRentals
+            // 
+            dgvMyRentals.BackgroundColor = Color.LightGray;
+            dgvMyRentals.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvMyRentals.Location = new Point(45, 107);
+            dgvMyRentals.Name = "dgvMyRentals";
+            dgvMyRentals.RowHeadersWidth = 51;
+            dgvMyRentals.Size = new Size(890, 508);
+            dgvMyRentals.TabIndex = 0;
             // 
             // tpProfile
             // 
@@ -299,7 +364,6 @@
             gpBoxPersonalInfo.Controls.Add(lblPhone);
             gpBoxPersonalInfo.Controls.Add(lblDocument);
             gpBoxPersonalInfo.Controls.Add(lblEmail);
-            gpBoxPersonalInfo.Controls.Add(pbProfilePicture);
             gpBoxPersonalInfo.Controls.Add(lblName);
             gpBoxPersonalInfo.Font = new Font("Segoe UI", 12F);
             gpBoxPersonalInfo.ForeColor = Color.FromArgb(48, 49, 51);
@@ -331,6 +395,7 @@
             btnEditPersonalInfo.TabIndex = 5;
             btnEditPersonalInfo.Text = "Editar Informações";
             btnEditPersonalInfo.TextAlignment = StringAlignment.Center;
+            btnEditPersonalInfo.Click += btnEditPersonalInfo_Click;
             // 
             // lblPhone
             // 
@@ -338,7 +403,7 @@
             lblPhone.BackColor = Color.Transparent;
             lblPhone.Font = new Font("Lato", 12F);
             lblPhone.ForeColor = Color.Black;
-            lblPhone.Location = new Point(230, 181);
+            lblPhone.Location = new Point(25, 180);
             lblPhone.Name = "lblPhone";
             lblPhone.Size = new Size(92, 24);
             lblPhone.TabIndex = 4;
@@ -350,7 +415,7 @@
             lblDocument.BackColor = Color.Transparent;
             lblDocument.Font = new Font("Lato", 12F);
             lblDocument.ForeColor = Color.Black;
-            lblDocument.Location = new Point(230, 128);
+            lblDocument.Location = new Point(25, 127);
             lblDocument.Name = "lblDocument";
             lblDocument.Size = new Size(51, 24);
             lblDocument.TabIndex = 3;
@@ -362,23 +427,11 @@
             lblEmail.BackColor = Color.Transparent;
             lblEmail.Font = new Font("Lato", 12F);
             lblEmail.ForeColor = Color.Black;
-            lblEmail.Location = new Point(230, 73);
+            lblEmail.Location = new Point(25, 72);
             lblEmail.Name = "lblEmail";
             lblEmail.Size = new Size(63, 24);
             lblEmail.TabIndex = 2;
             lblEmail.Text = "Email:";
-            // 
-            // pbProfilePicture
-            // 
-            pbProfilePicture.BackColor = Color.FromArgb(192, 196, 204);
-            pbProfilePicture.Location = new Point(25, 23);
-            pbProfilePicture.Name = "pbProfilePicture";
-            pbProfilePicture.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
-            pbProfilePicture.Size = new Size(182, 182);
-            pbProfilePicture.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            pbProfilePicture.TabIndex = 1;
-            pbProfilePicture.TabStop = false;
-            pbProfilePicture.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
             // lblName
             // 
@@ -386,31 +439,11 @@
             lblName.BackColor = Color.Transparent;
             lblName.Font = new Font("Lato", 12F);
             lblName.ForeColor = Color.Black;
-            lblName.Location = new Point(230, 23);
+            lblName.Location = new Point(25, 22);
             lblName.Name = "lblName";
             lblName.Size = new Size(158, 24);
             lblName.TabIndex = 0;
             lblName.Text = "Nome Completo:";
-            // 
-            // btnDeleteAd
-            // 
-            btnDeleteAd.BackColor = Color.Transparent;
-            btnDeleteAd.BorderColor = Color.SaddleBrown;
-            btnDeleteAd.EnteredBorderColor = Color.SaddleBrown;
-            btnDeleteAd.EnteredColor = Color.DarkRed;
-            btnDeleteAd.Font = new Font("Lato", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnDeleteAd.Image = null;
-            btnDeleteAd.ImageAlign = ContentAlignment.MiddleLeft;
-            btnDeleteAd.InactiveColor = Color.OrangeRed;
-            btnDeleteAd.Location = new Point(338, 33);
-            btnDeleteAd.Name = "btnDeleteAd";
-            btnDeleteAd.PressedBorderColor = Color.SaddleBrown;
-            btnDeleteAd.PressedColor = Color.DarkRed;
-            btnDeleteAd.Size = new Size(274, 56);
-            btnDeleteAd.TabIndex = 2;
-            btnDeleteAd.Text = "Deletar Anúncio";
-            btnDeleteAd.TextAlignment = StringAlignment.Center;
-            btnDeleteAd.Click += btnDeleteAd_Click;
             // 
             // MainForm
             // 
@@ -430,12 +463,13 @@
             ((System.ComponentModel.ISupportInitialize)dgvAllAds).EndInit();
             tpMyAds.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvMyAds).EndInit();
+            tpMyRentals.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvMyRentals).EndInit();
             tpProfile.ResumeLayout(false);
             gpBoxAddress.ResumeLayout(false);
             gpBoxAddress.PerformLayout();
             gpBoxPersonalInfo.ResumeLayout(false);
             gpBoxPersonalInfo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pbProfilePicture).EndInit();
             ResumeLayout(false);
         }
 
@@ -446,7 +480,6 @@
         private TabPage tpProfile;
         private ReaLTaiizor.Controls.HopeGroupBox gpBoxPersonalInfo;
         private ReaLTaiizor.Controls.LabelEdit lblName;
-        private ReaLTaiizor.Controls.HopePictureBox pbProfilePicture;
         private ReaLTaiizor.Controls.LabelEdit lblPhone;
         private ReaLTaiizor.Controls.LabelEdit lblDocument;
         private ReaLTaiizor.Controls.LabelEdit lblEmail;
@@ -465,5 +498,8 @@
         private DataGridView dgvMyAds;
         private DataGridView dgvAllAds;
         private ReaLTaiizor.Controls.Button btnDeleteAd;
+        private ReaLTaiizor.Controls.Button btnRent;
+        private TabPage tpMyRentals;
+        private DataGridView dgvMyRentals;
     }
 }
