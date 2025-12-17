@@ -27,5 +27,24 @@ namespace TocaAi.Domain.Entities
             Address = address;
             RegisterDate = registerDate;
         }
+
+        // atualizar informações
+        public void UpdateDetails(string fullName, string phoneNumber)
+        {
+            if (string.IsNullOrWhiteSpace(fullName))
+                throw new ArgumentException("Full name must not be empty.", nameof(fullName));
+
+            if (string.IsNullOrWhiteSpace(phoneNumber))
+                throw new ArgumentException("Phone number must not be empty.", nameof(phoneNumber));
+
+            FullName = fullName;
+            PhoneNumber = phoneNumber;
+        }
+
+        // atualizar endereço
+        public void UpdateAddress(Address address)
+        {
+            Address = address ?? throw new ArgumentNullException(nameof(address), "Address cannot be null");
+        }
     }
 }

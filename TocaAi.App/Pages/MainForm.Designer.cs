@@ -43,17 +43,16 @@
             lblComplement = new ReaLTaiizor.Controls.LabelEdit();
             lblState = new ReaLTaiizor.Controls.LabelEdit();
             lblNumber = new ReaLTaiizor.Controls.LabelEdit();
-            btnEditAddress = new ReaLTaiizor.Controls.Button();
             lblPostalCode = new ReaLTaiizor.Controls.LabelEdit();
             lblCity = new ReaLTaiizor.Controls.LabelEdit();
             lblNeighborhood = new ReaLTaiizor.Controls.LabelEdit();
             lblStreet = new ReaLTaiizor.Controls.LabelEdit();
             gpBoxPersonalInfo = new ReaLTaiizor.Controls.HopeGroupBox();
-            btnEditPersonalInfo = new ReaLTaiizor.Controls.Button();
             lblPhone = new ReaLTaiizor.Controls.LabelEdit();
             lblDocument = new ReaLTaiizor.Controls.LabelEdit();
             lblEmail = new ReaLTaiizor.Controls.LabelEdit();
             lblName = new ReaLTaiizor.Controls.LabelEdit();
+            btnEditProfileInfo = new ReaLTaiizor.Controls.Button();
             tabPageMain.SuspendLayout();
             tpEquipment.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvAllAds).BeginInit();
@@ -158,7 +157,7 @@
             btnDeleteAd.Image = null;
             btnDeleteAd.ImageAlign = ContentAlignment.MiddleLeft;
             btnDeleteAd.InactiveColor = Color.OrangeRed;
-            btnDeleteAd.Location = new Point(338, 33);
+            btnDeleteAd.Location = new Point(336, 33);
             btnDeleteAd.Name = "btnDeleteAd";
             btnDeleteAd.PressedBorderColor = Color.SaddleBrown;
             btnDeleteAd.PressedColor = Color.DarkRed;
@@ -213,7 +212,7 @@
             // 
             dgvMyRentals.BackgroundColor = Color.LightGray;
             dgvMyRentals.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvMyRentals.Location = new Point(45, 107);
+            dgvMyRentals.Location = new Point(45, 37);
             dgvMyRentals.Name = "dgvMyRentals";
             dgvMyRentals.RowHeadersWidth = 51;
             dgvMyRentals.Size = new Size(890, 508);
@@ -224,6 +223,7 @@
             tpProfile.BackColor = Color.White;
             tpProfile.Controls.Add(gpBoxAddress);
             tpProfile.Controls.Add(gpBoxPersonalInfo);
+            tpProfile.Controls.Add(btnEditProfileInfo);
             tpProfile.Location = new Point(174, 4);
             tpProfile.Name = "tpProfile";
             tpProfile.Padding = new Padding(3);
@@ -237,7 +237,6 @@
             gpBoxAddress.Controls.Add(lblComplement);
             gpBoxAddress.Controls.Add(lblState);
             gpBoxAddress.Controls.Add(lblNumber);
-            gpBoxAddress.Controls.Add(btnEditAddress);
             gpBoxAddress.Controls.Add(lblPostalCode);
             gpBoxAddress.Controls.Add(lblCity);
             gpBoxAddress.Controls.Add(lblNeighborhood);
@@ -245,10 +244,10 @@
             gpBoxAddress.Font = new Font("Segoe UI", 12F);
             gpBoxAddress.ForeColor = Color.FromArgb(48, 49, 51);
             gpBoxAddress.LineColor = Color.FromArgb(220, 223, 230);
-            gpBoxAddress.Location = new Point(51, 361);
+            gpBoxAddress.Location = new Point(51, 322);
             gpBoxAddress.Name = "gpBoxAddress";
             gpBoxAddress.ShowText = false;
-            gpBoxAddress.Size = new Size(878, 288);
+            gpBoxAddress.Size = new Size(878, 239);
             gpBoxAddress.TabIndex = 6;
             gpBoxAddress.TabStop = false;
             gpBoxAddress.Text = "hopeGroupBox1";
@@ -260,7 +259,7 @@
             lblComplement.BackColor = Color.Transparent;
             lblComplement.Font = new Font("Lato", 12F);
             lblComplement.ForeColor = Color.Black;
-            lblComplement.Location = new Point(25, 173);
+            lblComplement.Location = new Point(25, 172);
             lblComplement.Name = "lblComplement";
             lblComplement.Size = new Size(138, 24);
             lblComplement.TabIndex = 8;
@@ -272,7 +271,7 @@
             lblState.BackColor = Color.Transparent;
             lblState.Font = new Font("Lato", 12F);
             lblState.ForeColor = Color.Black;
-            lblState.Location = new Point(492, 71);
+            lblState.Location = new Point(492, 70);
             lblState.Name = "lblState";
             lblState.Size = new Size(75, 24);
             lblState.TabIndex = 7;
@@ -284,30 +283,11 @@
             lblNumber.BackColor = Color.Transparent;
             lblNumber.Font = new Font("Lato", 12F);
             lblNumber.ForeColor = Color.Black;
-            lblNumber.Location = new Point(25, 71);
+            lblNumber.Location = new Point(25, 70);
             lblNumber.Name = "lblNumber";
             lblNumber.Size = new Size(86, 24);
             lblNumber.TabIndex = 6;
             lblNumber.Text = "Número:";
-            // 
-            // btnEditAddress
-            // 
-            btnEditAddress.BackColor = Color.Transparent;
-            btnEditAddress.BorderColor = Color.SaddleBrown;
-            btnEditAddress.EnteredBorderColor = Color.SaddleBrown;
-            btnEditAddress.EnteredColor = Color.Chocolate;
-            btnEditAddress.Font = new Font("Lato", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnEditAddress.Image = null;
-            btnEditAddress.ImageAlign = ContentAlignment.MiddleLeft;
-            btnEditAddress.InactiveColor = Color.DarkOrange;
-            btnEditAddress.Location = new Point(25, 227);
-            btnEditAddress.Name = "btnEditAddress";
-            btnEditAddress.PressedBorderColor = Color.SaddleBrown;
-            btnEditAddress.PressedColor = Color.Chocolate;
-            btnEditAddress.Size = new Size(182, 45);
-            btnEditAddress.TabIndex = 5;
-            btnEditAddress.Text = "Editar Informações";
-            btnEditAddress.TextAlignment = StringAlignment.Center;
             // 
             // lblPostalCode
             // 
@@ -315,7 +295,7 @@
             lblPostalCode.BackColor = Color.Transparent;
             lblPostalCode.Font = new Font("Lato", 12F);
             lblPostalCode.ForeColor = Color.Black;
-            lblPostalCode.Location = new Point(492, 123);
+            lblPostalCode.Location = new Point(492, 122);
             lblPostalCode.Name = "lblPostalCode";
             lblPostalCode.Size = new Size(52, 24);
             lblPostalCode.TabIndex = 4;
@@ -327,7 +307,7 @@
             lblCity.BackColor = Color.Transparent;
             lblCity.Font = new Font("Lato", 12F);
             lblCity.ForeColor = Color.Black;
-            lblCity.Location = new Point(492, 21);
+            lblCity.Location = new Point(492, 20);
             lblCity.Name = "lblCity";
             lblCity.Size = new Size(76, 24);
             lblCity.TabIndex = 3;
@@ -339,7 +319,7 @@
             lblNeighborhood.BackColor = Color.Transparent;
             lblNeighborhood.Font = new Font("Lato", 12F);
             lblNeighborhood.ForeColor = Color.Black;
-            lblNeighborhood.Location = new Point(25, 123);
+            lblNeighborhood.Location = new Point(25, 122);
             lblNeighborhood.Name = "lblNeighborhood";
             lblNeighborhood.Size = new Size(68, 24);
             lblNeighborhood.TabIndex = 2;
@@ -351,7 +331,7 @@
             lblStreet.BackColor = Color.Transparent;
             lblStreet.Font = new Font("Lato", 12F);
             lblStreet.ForeColor = Color.Black;
-            lblStreet.Location = new Point(25, 21);
+            lblStreet.Location = new Point(25, 20);
             lblStreet.Name = "lblStreet";
             lblStreet.Size = new Size(49, 24);
             lblStreet.TabIndex = 0;
@@ -360,7 +340,6 @@
             // gpBoxPersonalInfo
             // 
             gpBoxPersonalInfo.BorderColor = Color.FromArgb(220, 223, 230);
-            gpBoxPersonalInfo.Controls.Add(btnEditPersonalInfo);
             gpBoxPersonalInfo.Controls.Add(lblPhone);
             gpBoxPersonalInfo.Controls.Add(lblDocument);
             gpBoxPersonalInfo.Controls.Add(lblEmail);
@@ -371,31 +350,11 @@
             gpBoxPersonalInfo.Location = new Point(51, 53);
             gpBoxPersonalInfo.Name = "gpBoxPersonalInfo";
             gpBoxPersonalInfo.ShowText = false;
-            gpBoxPersonalInfo.Size = new Size(878, 288);
+            gpBoxPersonalInfo.Size = new Size(878, 241);
             gpBoxPersonalInfo.TabIndex = 0;
             gpBoxPersonalInfo.TabStop = false;
             gpBoxPersonalInfo.Text = "hopeGroupBox1";
             gpBoxPersonalInfo.ThemeColor = Color.White;
-            // 
-            // btnEditPersonalInfo
-            // 
-            btnEditPersonalInfo.BackColor = Color.Transparent;
-            btnEditPersonalInfo.BorderColor = Color.SaddleBrown;
-            btnEditPersonalInfo.EnteredBorderColor = Color.SaddleBrown;
-            btnEditPersonalInfo.EnteredColor = Color.Chocolate;
-            btnEditPersonalInfo.Font = new Font("Lato", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnEditPersonalInfo.Image = null;
-            btnEditPersonalInfo.ImageAlign = ContentAlignment.MiddleLeft;
-            btnEditPersonalInfo.InactiveColor = Color.DarkOrange;
-            btnEditPersonalInfo.Location = new Point(25, 227);
-            btnEditPersonalInfo.Name = "btnEditPersonalInfo";
-            btnEditPersonalInfo.PressedBorderColor = Color.SaddleBrown;
-            btnEditPersonalInfo.PressedColor = Color.Chocolate;
-            btnEditPersonalInfo.Size = new Size(182, 45);
-            btnEditPersonalInfo.TabIndex = 5;
-            btnEditPersonalInfo.Text = "Editar Informações";
-            btnEditPersonalInfo.TextAlignment = StringAlignment.Center;
-            btnEditPersonalInfo.Click += btnEditPersonalInfo_Click;
             // 
             // lblPhone
             // 
@@ -445,6 +404,26 @@
             lblName.TabIndex = 0;
             lblName.Text = "Nome Completo:";
             // 
+            // btnEditProfileInfo
+            // 
+            btnEditProfileInfo.BackColor = Color.Transparent;
+            btnEditProfileInfo.BorderColor = Color.SaddleBrown;
+            btnEditProfileInfo.EnteredBorderColor = Color.SaddleBrown;
+            btnEditProfileInfo.EnteredColor = Color.Chocolate;
+            btnEditProfileInfo.Font = new Font("Lato", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnEditProfileInfo.Image = null;
+            btnEditProfileInfo.ImageAlign = ContentAlignment.MiddleLeft;
+            btnEditProfileInfo.InactiveColor = Color.DarkOrange;
+            btnEditProfileInfo.Location = new Point(52, 586);
+            btnEditProfileInfo.Name = "btnEditProfileInfo";
+            btnEditProfileInfo.PressedBorderColor = Color.SaddleBrown;
+            btnEditProfileInfo.PressedColor = Color.Chocolate;
+            btnEditProfileInfo.Size = new Size(229, 45);
+            btnEditProfileInfo.TabIndex = 5;
+            btnEditProfileInfo.Text = "Editar Informações";
+            btnEditProfileInfo.TextAlignment = StringAlignment.Center;
+            btnEditProfileInfo.Click += btnEditProfileInfo_Click;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
@@ -485,7 +464,7 @@
         private ReaLTaiizor.Controls.LabelEdit lblEmail;
         private ReaLTaiizor.Controls.Button btnEditPersonalInfo;
         private ReaLTaiizor.Controls.HopeGroupBox gpBoxAddress;
-        private ReaLTaiizor.Controls.Button btnEditAddress;
+        private ReaLTaiizor.Controls.Button btnEditProfileInfo;
         private ReaLTaiizor.Controls.LabelEdit lblPostalCode;
         private ReaLTaiizor.Controls.LabelEdit lblCity;
         private ReaLTaiizor.Controls.LabelEdit lblNeighborhood;

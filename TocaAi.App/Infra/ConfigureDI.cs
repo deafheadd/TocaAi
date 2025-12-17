@@ -50,6 +50,7 @@ namespace TocaAi.App.Infra
             services.AddScoped<IBaseService<Rental, Guid>, BaseService<Rental, Guid>>();
             services.AddScoped<IEquipmentService, EquipmentService>();
             services.AddScoped<IRentalService, RentalService>();
+            services.AddScoped<IUserService, UserService>();
             #endregion
 
             services.AddLogging();
@@ -85,6 +86,8 @@ namespace TocaAi.App.Infra
             services.AddTransient<RegisterForm>();
             services.AddTransient<MainForm>();
             services.AddTransient<CreateAdForm>();
+            services.AddTransient<RentalDetailsForm>();
+            services.AddTransient<EditProfileForm>();
             #endregion
 
             //serviceProvider = services.BuildServiceProvider();

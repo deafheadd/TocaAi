@@ -48,6 +48,8 @@
             txtUsername = new ReaLTaiizor.Controls.HopeTextBox();
             pBoxEye1 = new ReaLTaiizor.Controls.HopePictureBox();
             pBoxEye2 = new ReaLTaiizor.Controls.HopePictureBox();
+            labelEdit2 = new ReaLTaiizor.Controls.LabelEdit();
+            labelEdit3 = new ReaLTaiizor.Controls.LabelEdit();
             ((System.ComponentModel.ISupportInitialize)pBoxEye1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pBoxEye2).BeginInit();
             SuspendLayout();
@@ -61,7 +63,7 @@
             txtName.Font = new Font("Lato", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtName.ForeColor = Color.FromArgb(48, 49, 51);
             txtName.Hint = "Nome Completo";
-            txtName.Location = new Point(57, 204);
+            txtName.Location = new Point(57, 238);
             txtName.MaxLength = 32767;
             txtName.Multiline = false;
             txtName.Name = "txtName";
@@ -122,7 +124,7 @@
             txtEmail.Font = new Font("Lato", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtEmail.ForeColor = Color.FromArgb(48, 49, 51);
             txtEmail.Hint = "Email";
-            txtEmail.Location = new Point(57, 250);
+            txtEmail.Location = new Point(57, 284);
             txtEmail.MaxLength = 32767;
             txtEmail.Multiline = false;
             txtEmail.Name = "txtEmail";
@@ -145,7 +147,7 @@
             txtPassword.Font = new Font("Lato", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtPassword.ForeColor = Color.FromArgb(48, 49, 51);
             txtPassword.Hint = "Senha";
-            txtPassword.Location = new Point(57, 296);
+            txtPassword.Location = new Point(57, 330);
             txtPassword.MaxLength = 32767;
             txtPassword.Multiline = false;
             txtPassword.Name = "txtPassword";
@@ -168,7 +170,7 @@
             txtConfirmPassword.Font = new Font("Lato", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtConfirmPassword.ForeColor = Color.FromArgb(48, 49, 51);
             txtConfirmPassword.Hint = "Confirme Sua Senha";
-            txtConfirmPassword.Location = new Point(331, 296);
+            txtConfirmPassword.Location = new Point(331, 330);
             txtConfirmPassword.MaxLength = 32767;
             txtConfirmPassword.Multiline = false;
             txtConfirmPassword.Name = "txtConfirmPassword";
@@ -191,7 +193,7 @@
             txtStreet.Font = new Font("Lato", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtStreet.ForeColor = Color.FromArgb(48, 49, 51);
             txtStreet.Hint = "Rua";
-            txtStreet.Location = new Point(57, 477);
+            txtStreet.Location = new Point(57, 522);
             txtStreet.MaxLength = 32767;
             txtStreet.Multiline = false;
             txtStreet.Name = "txtStreet";
@@ -214,7 +216,7 @@
             txtNumber.Font = new Font("Lato", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtNumber.ForeColor = Color.FromArgb(48, 49, 51);
             txtNumber.Hint = "Número";
-            txtNumber.Location = new Point(502, 477);
+            txtNumber.Location = new Point(502, 522);
             txtNumber.MaxLength = 32767;
             txtNumber.Multiline = false;
             txtNumber.Name = "txtNumber";
@@ -237,7 +239,7 @@
             txtNeighborhood.Font = new Font("Lato", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtNeighborhood.ForeColor = Color.FromArgb(48, 49, 51);
             txtNeighborhood.Hint = "Bairro";
-            txtNeighborhood.Location = new Point(57, 523);
+            txtNeighborhood.Location = new Point(57, 568);
             txtNeighborhood.MaxLength = 32767;
             txtNeighborhood.Multiline = false;
             txtNeighborhood.Name = "txtNeighborhood";
@@ -260,7 +262,7 @@
             txtCity.Font = new Font("Lato", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtCity.ForeColor = Color.FromArgb(48, 49, 51);
             txtCity.Hint = "Cidade";
-            txtCity.Location = new Point(57, 569);
+            txtCity.Location = new Point(57, 614);
             txtCity.MaxLength = 32767;
             txtCity.Multiline = false;
             txtCity.Name = "txtCity";
@@ -283,7 +285,7 @@
             comboBoxState.FormattingEnabled = true;
             comboBoxState.ItemHeight = 30;
             comboBoxState.Items.AddRange(new object[] { "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO" });
-            comboBoxState.Location = new Point(502, 569);
+            comboBoxState.Location = new Point(502, 614);
             comboBoxState.Name = "comboBoxState";
             comboBoxState.Size = new Size(103, 36);
             comboBoxState.TabIndex = 10;
@@ -298,7 +300,7 @@
             txtPostalCode.Font = new Font("Lato", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtPostalCode.ForeColor = Color.FromArgb(48, 49, 51);
             txtPostalCode.Hint = "CEP";
-            txtPostalCode.Location = new Point(57, 615);
+            txtPostalCode.Location = new Point(57, 660);
             txtPostalCode.MaxLength = 32767;
             txtPostalCode.Multiline = false;
             txtPostalCode.Name = "txtPostalCode";
@@ -321,7 +323,7 @@
             txtPhoneNumber.Font = new Font("Lato", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtPhoneNumber.ForeColor = Color.FromArgb(48, 49, 51);
             txtPhoneNumber.Hint = "Número de Telefone";
-            txtPhoneNumber.Location = new Point(57, 342);
+            txtPhoneNumber.Location = new Point(57, 376);
             txtPhoneNumber.MaxLength = 32767;
             txtPhoneNumber.Multiline = false;
             txtPhoneNumber.Name = "txtPhoneNumber";
@@ -356,7 +358,7 @@
             txtComplement.Font = new Font("Lato", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtComplement.ForeColor = Color.FromArgb(48, 49, 51);
             txtComplement.Hint = "Complemento";
-            txtComplement.Location = new Point(57, 661);
+            txtComplement.Location = new Point(57, 706);
             txtComplement.MaxLength = 32767;
             txtComplement.Multiline = false;
             txtComplement.Name = "txtComplement";
@@ -380,7 +382,7 @@
             btnRegister.Image = null;
             btnRegister.ImageAlign = ContentAlignment.MiddleLeft;
             btnRegister.InactiveColor = Color.DarkOrange;
-            btnRegister.Location = new Point(409, 727);
+            btnRegister.Location = new Point(409, 772);
             btnRegister.Name = "btnRegister";
             btnRegister.PressedBorderColor = Color.SaddleBrown;
             btnRegister.PressedColor = Color.Chocolate;
@@ -399,7 +401,7 @@
             txtDocument.Font = new Font("Lato", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtDocument.ForeColor = Color.FromArgb(48, 49, 51);
             txtDocument.Hint = "CPF";
-            txtDocument.Location = new Point(57, 388);
+            txtDocument.Location = new Point(57, 422);
             txtDocument.MaxLength = 32767;
             txtDocument.Multiline = false;
             txtDocument.Name = "txtDocument";
@@ -422,7 +424,7 @@
             txtUsername.Font = new Font("Lato", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtUsername.ForeColor = Color.FromArgb(48, 49, 51);
             txtUsername.Hint = "Nome de Usuário";
-            txtUsername.Location = new Point(57, 155);
+            txtUsername.Location = new Point(57, 189);
             txtUsername.MaxLength = 32767;
             txtUsername.Multiline = false;
             txtUsername.Name = "txtUsername";
@@ -466,13 +468,39 @@
             pBoxEye2.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             pBoxEye2.Click += pBoxEye2_Click;
             // 
+            // labelEdit2
+            // 
+            labelEdit2.AutoSize = true;
+            labelEdit2.BackColor = Color.Transparent;
+            labelEdit2.Font = new Font("Lato", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            labelEdit2.ForeColor = Color.DimGray;
+            labelEdit2.Location = new Point(57, 163);
+            labelEdit2.Name = "labelEdit2";
+            labelEdit2.Size = new Size(168, 21);
+            labelEdit2.TabIndex = 30;
+            labelEdit2.Text = "Informações pessoais";
+            // 
+            // labelEdit3
+            // 
+            labelEdit3.AutoSize = true;
+            labelEdit3.BackColor = Color.Transparent;
+            labelEdit3.Font = new Font("Lato", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            labelEdit3.ForeColor = Color.DimGray;
+            labelEdit3.Location = new Point(57, 496);
+            labelEdit3.Name = "labelEdit3";
+            labelEdit3.Size = new Size(81, 21);
+            labelEdit3.TabIndex = 31;
+            labelEdit3.Text = "Endereço";
+            // 
             // RegisterForm
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.WhiteSmoke;
             BorderColor = Color.Transparent;
-            ClientSize = new Size(667, 786);
+            ClientSize = new Size(667, 846);
+            Controls.Add(labelEdit3);
+            Controls.Add(labelEdit2);
             Controls.Add(pBoxEye2);
             Controls.Add(pBoxEye1);
             Controls.Add(txtUsername);
@@ -525,5 +553,7 @@
         private ReaLTaiizor.Controls.HopeTextBox txtUsername;
         private ReaLTaiizor.Controls.HopePictureBox pBoxEye1;
         private ReaLTaiizor.Controls.HopePictureBox pBoxEye2;
+        private ReaLTaiizor.Controls.LabelEdit labelEdit2;
+        private ReaLTaiizor.Controls.LabelEdit labelEdit3;
     }
 }

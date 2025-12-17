@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using ReaLTaiizor.Forms;
 using TocaAi.App.Session;
+using TocaAi.Domain.ValueObjects;
 using TocaAi.Service.Interfaces;
 
 namespace TocaAi.App.Pages
@@ -9,11 +10,13 @@ namespace TocaAi.App.Pages
     {
         private readonly IEquipmentService _equipmentService;
         private readonly IRentalService _rentalService;
-        public MainForm(IEquipmentService equipmentService, IRentalService rentalService)
+        private readonly IUserService _userService;
+        public MainForm(IEquipmentService equipmentService, IRentalService rentalService, IUserService userService)
         {
             InitializeComponent();
             _equipmentService = equipmentService;
             _rentalService = rentalService;
+            _userService = userService;
         }
 
         // configurar exibição de TabPages por Role
@@ -385,9 +388,48 @@ namespace TocaAi.App.Pages
             }
         }
 
-        private void btnEditPersonalInfo_Click(object sender, EventArgs e)
+        private void btnEditProfileInfo_Click(object sender, EventArgs e)
         {
+            var personSession = UserSession.CurrentUser.Person;
 
+            using (var editForm = new EditProfileForm(personSession))
+            {
+                if (editForm.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        string newFullName = editForm.txtName.Text.Trim();
+                        string newPhone = editForm.txtPhoneNumber.Text.Trim();
+
+                        var newAddress = new Address(
+                            editForm.txtStreet.Text.Trim(),
+                            editForm.txtNumber.Text.Trim(),
+                            editForm.txtNeighborhood.Text.Trim(),
+                            editForm.txtCity.Text.Trim(),
+                            editForm.cboState.SelectedItem.ToString().Trim(),
+                            editForm.txtComplement.Text.Trim(),
+                            editForm.txtPostalCode.Text.Trim()
+                        );
+
+                        _userService.UpdateFullProfile(personSession.Id, newFullName, newPhone, newAddress);
+
+                        // atualizar sessão
+                        personSession.UpdateDetails(newFullName, newPhone);
+                        personSession.UpdateAddress(newAddress);
+
+                        // atualizar labels
+                        LoadUserProfileData();
+
+                        MessageBox.Show("Perfil atualizado com sucesso.", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch (Exception ex)
+                    {
+                        //MessageBox.Show("Erro ao salvar: " + ex.Message);
+                        var realError = ex.InnerException != null ? ex.InnerException.Message : ex.Message;
+                        MessageBox.Show("Erro real do banco: " + realError);
+                    }
+                }
+            }
         }
     }
 }
